@@ -21,7 +21,7 @@ class Ruta
         Ruta(int codigo=0, string nombre="", string estado="", string dificultad="", float longitud=0, float duracion=0);
 
         //MODIFICADORES
-        inline bool setCodigo(int codigo){if(codigo=000000)return false; else codigo_=codigo; return true;}
+        inline void setCodigo(int codigo){codigo_=codigo;}
         inline void setNombre(string nombre){nombre_=nombre;}
         inline void setEstado(string estado){estado_=estado;}
         inline void setDificultad(string dificultad){dificultad_=dificultad;}
