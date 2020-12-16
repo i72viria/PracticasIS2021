@@ -3,7 +3,7 @@
 //#include "Visitante.h"
 
 Monitor::Monitor(string nombreM, string apellido1M, string apellido2M,
-    string dniM, string direccionM,string emailM, int telefonoM){
+    string dniM, string direccionM,string emailM, int telefonoM, string usuario, string contrasena){
         setNombreM(nombreM);
         setApellido1M(apellido1M);
         setApellido2M(apellido2M);
@@ -11,6 +11,40 @@ Monitor::Monitor(string nombreM, string apellido1M, string apellido2M,
         setDireccionM(direccionM);
         setEmailM(emailM);
         setTelefonoM(telefonoM);
+        setUsuario(usuario);
+        setContrasena(contrasena);
+}
+
+bool Monitor::identificacion(){
+    cout<<"Identificate para acceder: "<<endl;
+    string usuarioID, contrasenaID;
+    cout<<"Introduce el usuario: ";
+    cin>>usuarioID; cout<<endl;
+    cout<<"Introduce la contrasena: ";
+    cin>>contrasenaID; cout<<endl;
+
+    string usuario=getUsuario();
+    string contrasena=getContrasena();
+
+    if(usuario==usuarioID)
+    {
+        if(contrasena==contrasenaID) 
+        {
+            cout<<"Has accedido al sistema con exito"<<endl;
+            return true;
+        }
+        else 
+        {
+            cout<<"No has accedido al sistema. CONTRASEÑA ERRONEA"<<endl;
+            return false;
+        }
+    }
+    else 
+    {
+        cout<<"No has accedido al sistema. USUARIO ERRONEO"<<endl;
+        return false;
+    }
+
 }
 
 bool Monitor::crearRuta(Ruta r){
@@ -91,16 +125,50 @@ void Monitor::visualizarRutas(){
     f.close();
 }
 
+ void Monitor::cambiarEstadoRuta(Ruta r){
+    int codigo=0;
+    string nombre="", newestado="", dificultad="";
+    float longitud=0.0, duracion=0.0;
+    cout<<"Introduce el nuevo estado de la ruta"<<endl;
+    cin>>newestado;
+    int a=0;
 
+        for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
+            if(i->getCodigo()== r.getCodigo()){
+                codigo=r.getCodigo();
+                nombre=r.getNombre();
+                dificultad=r.getDificultad();
+                longitud=r.getLongitud();
+                duracion=r.getDuracion();
+                cout<<"Actualizando.."<<endl;
+                cout<<"Nueva ruta "<<codigo<<" "<<nombre<<" "<<newestado<<" "<<dificultad<<" "<<longitud<<" "<<duracion<<"\n";
+
+            }
+        }   
+            deleteRuta(codigo);
+            cout<<"borrado"<<endl;
+            
+            Ruta aux(codigo, nombre, newestado, dificultad, longitud, duracion);
+                cout<<"Y ahora introducirla en la lista"<<endl;
+                rutas_.push_back(aux);
+                escribeRutas();
+                visualizarRutas();
+
+}
 
 int main()
 {
-    Monitor m("Pepe","Pradas","Roldan","123456789X", "San blas", "pepemola@gmail.com",696969696);
+    Monitor m("Pepe","Pradas","Roldan","123456789X", "San blas", "pepemola@gmail.com",696969696,"PepePradasRoldan","123456789X");
     Ruta j(1, "Bosque","Accesible", "Basico", 1.3, 2);
     Ruta i(2, "Rio", "Accesible", "medio",1.5,1.3);
+    if( m.identificacion()==0){
+        return 0;
+    }
     m.crearRuta(j);
     m.crearRuta(i);
     m.escribeRutas();
     m.visualizarRutas();
+    m.cambiarEstadoRuta(i);
+    m.cambiarEstadoRuta(j);
     return 0;
 }
