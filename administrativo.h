@@ -22,8 +22,8 @@ class Administrativo
         int telefonoA;
         string usuario_;
         string contrasena_;
-        list <Reserva> reservas_;
-        list <Visitante> visitantes_;
+        list<Reserva> reservas_;
+        list<Visitante> visitantes_;
 
     public:
         Administrativo(string nombre="", string apellido1="", string apellido2="", string dni="",

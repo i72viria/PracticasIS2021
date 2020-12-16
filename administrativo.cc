@@ -55,6 +55,7 @@ bool Administrativo::creaReserva(Reserva r)
 {
     for(list<Reserva>::iterator i=reservas_.begin();i!=reservas_.end();i++)
     {
+        cout<<"PRUEBA"<<endl;
         if(i->getDniReserva()==r.getDniReserva())
         {
             cout<<"Reserva fallida"<<endl;
@@ -71,10 +72,17 @@ bool Administrativo::setVisitante(Visitante v)
     string nombre,apellido1,apellido2,dni,fecha_nacimiento,discapacidad;
     int telefono;
 
+    cout<<"O"<<endl;
+
     for(list<Visitante>::iterator i=visitantes_.begin();i!=visitantes_.end();i++)
     {
-        if(i->getDniV()==v.getDniV()){
-            cout<<"Introduce el nombre del visitante: ";
+        cout<<"X"<<endl;
+        if(i->getDniV()==v.getDniV())
+        {
+            cout<<"Error al crear visitante";
+            return false;    
+        }
+        cout<<"Introduce el nombre del visitante: ";
             cin>>nombre;
             cout<<"Introduce el primer apellido: ";
             cin>>apellido1;
@@ -96,8 +104,8 @@ bool Administrativo::setVisitante(Visitante v)
             v.setFecha_nacimiento(fecha_nacimiento);
             v.setTelefonoV(telefono);
             v.setDiscapacidad(discapacidad);
-        }
     } 
+    cout<<"L"<<endl;
     visitantes_.push_back(v);
     return true; 
 
@@ -119,7 +127,7 @@ int main()
 {
     Administrativo i("Alvaro","Roldan","Lucena","123456789X","Codoba","i92rolua@uco.es",123456789,"AlvaroRoldanLucena","123456789X");
 
-    if(i.identificacion()==0) return 0;
+   /* if(i.identificacion()==0) return 0;
     
     cout<<"Nombre: "<<i.getNombre()<<endl;
     cout<<"Apellidos: "<<i.getApellido1()<<" "<<i.getApellido2()<<endl;
@@ -129,9 +137,14 @@ int main()
     cout<<"Telfono: "<<i.getTelefono()<<endl;
     cout<<"Usuario: "<<i.getUsuario()<<endl;
     cout<<"Contrasena: "<<i.getContrasena()<<endl;
-    
+    */
     Reserva j("123456789X","12/12/2020","Bicileta");
     i.creaReserva(j);
-   
+
+    cout<<"H"<<endl;
+    Visitante w;//("H","O","L","A","Q",123456789,"TAL");
+    i.setVisitante(w);
+    cout<<"A"<<endl;
+
     return 0;    
 }
