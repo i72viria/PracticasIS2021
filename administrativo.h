@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include <list>
 #include "reserva.h"
@@ -54,10 +55,16 @@ class Administrativo
 
         //OTRAS FUNCIONES
         bool identificacion();
-        bool creaReserva(Reserva r);
-        bool setVisitante(Visitante v);
+        bool creaReserva(Reserva y);
+        void setVisitante();
         void modificaInformacion();
         void editarOanadirInformacion();
+
+        //FUNCIONES DE APOYO
+        void escribeReservas();
+        void visualizarReservas();
+        void escribeVisitantes();
+        void visualizarVisitantes();
 };
 
 #endif

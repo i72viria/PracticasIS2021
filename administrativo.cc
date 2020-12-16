@@ -25,7 +25,7 @@ bool Administrativo::identificacion()
     cout<<"Introduce el usuario: ";
     cin>>usuarioID;
     cout<<"Introduce la contrasena: ";
-    cin>>contrasenaID; cout<<endl;
+    cin>>contrasenaID;
 
     string usuario=getUsuario();
     string contrasena=getContrasena();
@@ -34,7 +34,7 @@ bool Administrativo::identificacion()
     {
         if(contrasena==contrasenaID) 
         {
-            cout<<"Has accedido al sistema con exito"<<endl;
+            cout<<"Has accedido al sistema con exito."<<endl;
             return true;
         }
         else 
@@ -51,66 +51,135 @@ bool Administrativo::identificacion()
 
 }
 
-bool Administrativo::creaReserva(Reserva r)
+bool Administrativo::creaReserva(Reserva y)
 {
     for(list<Reserva>::iterator i=reservas_.begin();i!=reservas_.end();i++)
     {
-        cout<<"PRUEBA"<<endl;
-        if(i->getDniReserva()==r.getDniReserva())
+        if(i->getDniReserva()==y.getDniReserva())
         {
             cout<<"Reserva fallida"<<endl;
             return false;
         }
     }
-    cout<<"Reserva creada con exito"<<endl;
-    reservas_.push_back(r);
+    cout<<"Reserva creada con exito. DNI asociado a la reserva: "<<y.getDniReserva()<<endl;
+    reservas_.push_back(y);
     return true;   
 }
 
-bool Administrativo::setVisitante(Visitante v)
+void Administrativo::setVisitante()
 {
     string nombre,apellido1,apellido2,dni,fecha_nacimiento,discapacidad;
     int telefono;
 
-    cout<<"O"<<endl;
-
-    for(list<Visitante>::iterator i=visitantes_.begin();i!=visitantes_.end();i++)
-    {
-        cout<<"X"<<endl;
-        if(i->getDniV()==v.getDniV())
-        {
-            cout<<"Error al crear visitante";
-            return false;    
-        }
-        cout<<"Introduce el nombre del visitante: ";
-            cin>>nombre;
-            cout<<"Introduce el primer apellido: ";
-            cin>>apellido1;
-            cout<<"Introduce el segundo apellido: ";
-            cin>>apellido2;
-            cout<<"Inctroduce el dni: ";
-            cin>>dni;
-            cout<<"Introduce la fecha de nacmiento: ";
-            cin>>fecha_nacimiento;
-            cout<<"IUntroduce el numero de telefono:";
-            cin>>telefono;
-            cout<<"Introduce si tienes alguna discapacidad, si no, escribe 'Ninnguna': ";
-            cin>>discapacidad;
+    cout<<"Introduce el nombre del visitante: ";
+    cin>>nombre;
+    cout<<"Introduce el primer apellido: ";
+    cin>>apellido1;
+    cout<<"Introduce el segundo apellido: ";
+    cin>>apellido2;
+    cout<<"Inctroduce el dni: ";
+    cin>>dni;
+    cout<<"Introduce la fecha de nacmiento: ";
+    cin>>fecha_nacimiento;
+    cout<<"Introduce el numero de telefono:";
+    cin>>telefono;
+    cout<<"Introduce si tienes alguna discapacidad, si no, escribe 'Ninguna': ";
+    cin>>discapacidad;
             
-            v.setNombreV(nombre);
-            v.setApellido1V(apellido1);
-            v.setApellido2V(apellido2);
-            v.setDniV(dni);
-            v.setFecha_nacimiento(fecha_nacimiento);
-            v.setTelefonoV(telefono);
-            v.setDiscapacidad(discapacidad);
-    } 
-    cout<<"L"<<endl;
-    visitantes_.push_back(v);
-    return true; 
+    Visitante aux(nombre,apellido1,apellido2,dni,fecha_nacimiento,telefono,discapacidad);
 
+    for(list<Visitante>::iterator i=visitantes_.begin();i!=visitantes_.end();i++){
+        if(i->getDniV()==aux.getDniV())
+        {
+            cout<<"Error, mismo DNI"<<endl;
+            exit (EXIT_FAILURE);
+        }
+    }
+    visitantes_.push_back(aux);
 }
 
+//FUNCIONES DE APOYO
+
+void Administrativo::escribeReservas(){
+    string nomfichero="reservas.txt";
+    fstream f;
+    f.open(nomfichero,std::ios::out);
+    for(list<Reserva>::iterator i=reservas_.begin();i!=reservas_.end();i++){
+        f<<i->getFechaReserva()<<","+
+        i->getDniReserva()<<","+
+        i->getTipoRuta()<<"\n";
+    }
+    f.close();
+}
+
+void Administrativo::visualizarReservas(){
+    reservas_.clear();
+    fstream f;
+    f.open("reservas.txt",std::fstream::in);
+    if(f.is_open()){
+        char fecha[225],dni[225],tipo[225];
+
+        while(f.getline(fecha,225,',')){
+            f.getline(dni,225,',');
+            f.getline(tipo,225,'\n');
+            
+            Reserva aux(fecha,dni,tipo);
+            reservas_.push_back(aux);
+            cout<<fecha<<" "<<dni<<" "<<tipo<<endl;
+        }
+    }
+        else{
+            cout<<"Error. No se pudo abrir el fichero";
+        }
+    f.close();
+}
+
+
+void Administrativo::escribeVisitantes(){
+    string nomfichero="visitantes.txt";
+    fstream f;
+    f.open(nomfichero,std::ios::out);
+    for(list<Visitante>::iterator i=visitantes_.begin();i!=visitantes_.end();i++){
+        f<<i->getNombreV()<<","+
+        i->getApellido1V()<<","+
+        i->getApellido2V()<<","<<
+        i->getDniV()<<","<<
+        i->getFecha_nacimiento()<<","<<
+        i->getTelefonoV()<<","<<
+        i->getDiscapacidad()<<"\n";
+    }
+    f.close();
+}
+
+
+void Administrativo::visualizarVisitantes(){
+    visitantes_.clear();
+    fstream f;
+    f.open("visitantes.txt",std::fstream::in);
+    if(f.is_open()){
+        char nombre[225],apellido1[225],apellido2[225],dni[225],fecha[225],telefono[225],disca[255];
+
+        while(f.getline(nombre,225,',')){
+            f.getline(apellido1,225,',');
+            f.getline(apellido2,225,',');
+            f.getline(dni,225,',');
+            f.getline(fecha,225,',');
+            f.getline(telefono,225,',');
+            f.getline(disca,225,'\n');
+
+            Visitante aux(nombre,apellido1,apellido2,dni,fecha,atoi(telefono),disca);
+            visitantes_.push_back(aux);
+            cout<<nombre<<" "<<apellido1<<" "<<apellido2<<" "<<dni<<" "<<fecha<<" "<<telefono<<" "<<disca<<endl;
+        }
+    }
+        else{
+            cout<<"Error. No se pudo abrir el fichero";
+        }
+    f.close();
+}
+
+
+/////////////////////////////////////////////////////////////////////////////
 
 void Administrativo::modificaInformacion()
 {
@@ -127,7 +196,7 @@ int main()
 {
     Administrativo i("Alvaro","Roldan","Lucena","123456789X","Codoba","i92rolua@uco.es",123456789,"AlvaroRoldanLucena","123456789X");
 
-   /* if(i.identificacion()==0) return 0;
+   if(i.identificacion()==0) return 0;
     
     cout<<"Nombre: "<<i.getNombre()<<endl;
     cout<<"Apellidos: "<<i.getApellido1()<<" "<<i.getApellido2()<<endl;
@@ -137,14 +206,20 @@ int main()
     cout<<"Telfono: "<<i.getTelefono()<<endl;
     cout<<"Usuario: "<<i.getUsuario()<<endl;
     cout<<"Contrasena: "<<i.getContrasena()<<endl;
-    */
-    Reserva j("123456789X","12/12/2020","Bicileta");
+    
+    Reserva j("12/12/2020","123456789X","Bicicleta");
+    Reserva m("15/08/2020","987654321A","A pie");
     i.creaReserva(j);
+    i.creaReserva(m);
+    i.escribeReservas();
+    i.visualizarReservas();
 
-    cout<<"H"<<endl;
-    Visitante w;//("H","O","L","A","Q",123456789,"TAL");
-    i.setVisitante(w);
-    cout<<"A"<<endl;
+    cout<<"\n"<<"Primer visitante"<<endl;
+    i.setVisitante();
+    cout<<"\n"<<"Segundo visitante"<<endl;
+    i.setVisitante();
+    i.escribeVisitantes();
+    i.visualizarVisitantes();
 
     return 0;    
 }
