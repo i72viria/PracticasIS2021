@@ -4,6 +4,9 @@
 #include <string>
 #include <iostream>
 #include <cstdlib>
+#include <list>
+#include "reserva.h"
+#include "Visitante.h"
 
 using namespace std;
 
@@ -19,6 +22,8 @@ class Administrativo
         int telefonoA;
         string usuario_;
         string contrasena_;
+        list <Reserva> reservas_;
+        list <Visitante> visitantes_;
 
     public:
         Administrativo(string nombre="", string apellido1="", string apellido2="", string dni="",
@@ -49,8 +54,8 @@ class Administrativo
 
         //OTRAS FUNCIONES
         bool identificacion();
-        void creaReserva();
-        void setVisitante();
+        bool creaReserva(Reserva r);
+        bool setVisitante(Visitante v);
         void modificaInformacion();
         void editarOanadirInformacion();
 };
