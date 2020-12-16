@@ -14,7 +14,7 @@ using namespace std;
         string Apellido1V_;
         string Apellido2V_;
         string DniV_;
-        date Fecha_nacimiento_;
+        string Fecha_nacimiento_;
         int TelefonoV_;
         string Discapacidad_;
       public:
@@ -40,7 +40,7 @@ using namespace std;
         inline void setDniV(string DniV){DniV_=DniV;}
         inline string getDniV(){return DniV_;}
 
-        inline void setFecha_nacimiento(date Fecha_nacimiento){Fecha_nacimiento_=Fecha_nacimiento;}
+        inline void setFecha_nacimiento(string Fecha_nacimiento){Fecha_nacimiento_=Fecha_nacimiento;}
         inline date getFecha_nacimiento(){return Fecha_nacimiento_;}
 
         inline void setTelefonoV(int TelefonoV){TelefonoV_=TelefonoV;}
