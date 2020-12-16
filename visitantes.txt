@@ -1,0 +1,4 @@
+Alvaro,Roldan,Lucena,198427384C,02.03.2001,123456789,Ahogos
+Victoria,Pradas,Laguna,763948124F,07.01.2001,987654321,Esguince
+Angel,Villegas,delRio,759362515P,12.04.1999,773285712,Asma
+Aurora,Ramirez,Quesada,856194729G,01.06.1995,857295871,Ninguna
