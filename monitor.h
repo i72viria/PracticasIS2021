@@ -1,5 +1,5 @@
-#ifndef RESERVA_H
-#define RESERVA_H
+#ifndef MONITOR_H
+#define MONITOR_H
 
 #include <iostream>
 #include <string>
@@ -7,11 +7,10 @@
 #include <list>
 #include <cstdlib>
 #include "ruta.h"
-
-
-
+#include "Visitante.h"
 
 using namespace std;
+
 
 class Monitor{
     private:
@@ -25,6 +24,7 @@ class Monitor{
         string usuario_;
         string contrasena_;
         list<Ruta> rutas_;
+        list<Visitante> visitantes_;
 
     public:
         //CONSTRUCTOR CLASE MONITOR
@@ -66,18 +66,20 @@ class Monitor{
         inline void setContrasena(string contrasena){contrasena=getDniM(); contrasena_=contrasena;}   
         inline string getContrasena()const{return contrasena_;}
 
-        //LISTA RUTAS
+        //LISTA RUTAS Y VISITANTES
         inline list<Ruta> getRutas()const{return rutas_;}
+        inline list<Visitante> getVisitantes()const{return visitantes_;}
 
         //FUNCIONES 
-        bool identificacion();
-        bool crearRuta(Ruta r);  //Crea una nueva ruta 
-        int deleteRuta(int codigo);
-        int deleteRuta(Ruta r);
-        void escribeRutas();
-        void visualizarRutas(); //Visualiza rutas existentes del parque
-        //void visualizarVisitantes(); //Visualiza datos del visitante
-        void cambiarEstadoRuta(Ruta r);  //Cambia el estado de la ruta.
+        bool identificacion();          //Identifiación de usuario
+        bool crearRuta(Ruta r);         //Crea una nueva ruta 
+        bool crearRuta();               //Crear una ruta pidiendo datos
+        int deleteRuta(int codigo);     //Elinima una ruta a partir del codigo
+        int deleteRuta(Ruta r);         //Elimina una ruta a partir de la clase
+        void escribeRutas();            //Escribe las rutas existentes en un fichero
+        void visualizarRutas();         //Visualiza rutas existentes del parque
+        void cambiarEstadoRuta(Ruta r); //Cambia el estado de la ruta.
+        void visualizarVisitantes();    //Visualiza datos del visitante
 };
 
 #endif
