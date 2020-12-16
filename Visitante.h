@@ -41,7 +41,7 @@ using namespace std;
         inline string getDniV(){return DniV_;}
 
         inline void setFecha_nacimiento(string Fecha_nacimiento){Fecha_nacimiento_=Fecha_nacimiento;}
-        inline date getFecha_nacimiento(){return Fecha_nacimiento_;}
+        inline string getFecha_nacimiento(){return Fecha_nacimiento_;}
 
         inline void setTelefonoV(int TelefonoV){TelefonoV_=TelefonoV;}
         inline int getTelefonoV(){return TelefonoV_;}
