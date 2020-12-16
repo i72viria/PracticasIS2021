@@ -3,6 +3,7 @@
 
 #include <string>
 #include <iostream>
+#include <fstream>
 #include <cstdlib>
 #include <list>
 #include "reserva.h"
@@ -22,8 +23,8 @@ class Administrativo
         int telefonoA;
         string usuario_;
         string contrasena_;
-        list <Reserva> reservas_;
-        list <Visitante> visitantes_;
+        list<Reserva> reservas_;
+        list<Visitante> visitantes_;
 
     public:
         Administrativo(string nombre="", string apellido1="", string apellido2="", string dni="",
@@ -54,10 +55,16 @@ class Administrativo
 
         //OTRAS FUNCIONES
         bool identificacion();
-        bool creaReserva(Reserva r);
-        bool setVisitante(Visitante v);
+        bool creaReserva(Reserva y);
+        void setVisitante();
         void modificaInformacion();
         void editarOanadirInformacion();
+
+        //FUNCIONES DE APOYO
+        void escribeReservas();
+        void visualizarReservas();
+        void escribeVisitantes();
+        void visualizarVisitantes();
 };
 
 #endif

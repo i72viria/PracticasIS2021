@@ -1,6 +1,6 @@
 #include "monitor.h"
 #include "ruta.h"
-//#include "Visitante.h"
+
 
 Monitor::Monitor(string nombreM, string apellido1M, string apellido2M,
     string dniM, string direccionM,string emailM, int telefonoM, string usuario, string contrasena){
@@ -14,6 +14,7 @@ Monitor::Monitor(string nombreM, string apellido1M, string apellido2M,
         setUsuario(usuario);
         setContrasena(contrasena);
 }
+
 
 bool Monitor::identificacion(){
     cout<<"Identificate para acceder: "<<endl;
@@ -47,15 +48,51 @@ bool Monitor::identificacion(){
 
 }
 
+
 bool Monitor::crearRuta(Ruta r){
+    cout<<"Creando una nueva ruta..."<<endl;
     for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
         if(i->getCodigo()==r.getCodigo()){
             return false;
         }
     }
+    
     rutas_.push_back(r);
+    cout<<"Ruta creada con exito"<<endl;
     return true;   
 }
+
+
+bool Monitor::crearRuta(){
+    cout<<"Creando una nueva ruta..."<<endl;
+    int codigo;
+    string nombre, estado, dificultad;
+    float longitud, duracion;
+    cout<<"Introduce un codigo identificador de la ruta: "<<endl;
+    cin>>codigo;
+    cout<<"Introduce el nombre: "<<endl;
+    cin>>nombre;
+    cout<<"Introduce el estado de la ruta: "<<endl;
+    cin>>estado;
+    cout<<"Introduce el dificultad: "<<endl;
+    cin>>dificultad;
+    cout<<"Introduce la longitud: "<<endl;
+    cin>>longitud;
+    cout<<"Introduce la duración aproximada: "<<endl;
+    cin>>duracion;
+
+    Ruta aux(codigo, nombre, estado, dificultad, longitud, duracion);
+    for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
+        if(i->getCodigo()==aux.getCodigo()){
+            return false;
+        }
+    }
+    
+    rutas_.push_back(aux);
+    cout<<"Ruta creada con exito"<<endl;
+    return true;   
+}
+
 
 int Monitor::deleteRuta(int codigo){
     if(rutas_.empty()){
@@ -70,6 +107,7 @@ int Monitor::deleteRuta(int codigo){
     return -2;
 }
 
+
 int Monitor::deleteRuta(Ruta r){
     if(rutas_.empty()){
         return -1;
@@ -82,6 +120,7 @@ int Monitor::deleteRuta(Ruta r){
     }
     return -2;
 }
+
 
 void Monitor::escribeRutas(){
     string nomfichero="rutas.txt";
@@ -97,6 +136,7 @@ void Monitor::escribeRutas(){
     }
     f.close();
 }
+
 
 void Monitor::visualizarRutas(){
     rutas_.clear();
@@ -125,12 +165,15 @@ void Monitor::visualizarRutas(){
     f.close();
 }
 
+
  void Monitor::cambiarEstadoRuta(Ruta r){
+    cout<<"\nCambiando el estado de la ruta "<<r.getCodigo()<<" cuyo estado es "<<r.getEstado()<<endl;
     int codigo=0;
     string nombre="", newestado="", dificultad="";
     float longitud=0.0, duracion=0.0;
     cout<<"Introduce el nuevo estado de la ruta"<<endl;
     cin>>newestado;
+    cout<<endl;
     int a=0;
 
         for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
@@ -141,34 +184,117 @@ void Monitor::visualizarRutas(){
                 longitud=r.getLongitud();
                 duracion=r.getDuracion();
                 cout<<"Actualizando.."<<endl;
-                cout<<"Nueva ruta "<<codigo<<" "<<nombre<<" "<<newestado<<" "<<dificultad<<" "<<longitud<<" "<<duracion<<"\n";
+                cout<<"Ruta actualizada "<<codigo<<" "<<nombre<<" "<<newestado<<" "<<dificultad<<" "<<longitud<<" "<<duracion<<"\n";
 
             }
         }   
             deleteRuta(codigo);
-            cout<<"borrado"<<endl;
+            
             
             Ruta aux(codigo, nombre, newestado, dificultad, longitud, duracion);
-                cout<<"Y ahora introducirla en la lista"<<endl;
                 rutas_.push_back(aux);
-                escribeRutas();
-                visualizarRutas();
-
 }
+
+
+void Monitor::visualizarVisitantes(){
+    cout<<"\nVisualizando visitantes y características..."<<endl;
+    fstream f;
+    f.open("visitantes.txt",std::fstream::in);
+    if(f.is_open()){
+        char nombre[225],apellido1[225],apellido2[225],dni[225],
+            fecha_nacimiento[225],telefono[225],discapacidad[225];
+
+        
+        while(f.getline(nombre,225,',')){
+            f.getline(apellido1,225,',');
+            f.getline(apellido2,225,',');
+            f.getline(dni,225,',');
+            f.getline(fecha_nacimiento,225,',');
+            f.getline(telefono,225,',');
+            f.getline(discapacidad,225,'\n');
+
+            
+            cout<<nombre<<apellido1<<apellido2<<discapacidad<<endl;
+        }
+    }
+        else{
+            cout<<"Error. No se pudo abrir el fichero";
+        }
+    f.close();
+}
+
+
+
+
+
+ 
 
 int main()
 {
-    Monitor m("Pepe","Pradas","Roldan","123456789X", "San blas", "pepemola@gmail.com",696969696,"PepePradasRoldan","123456789X");
+    Monitor m("Victoria","Pradas","Laguna","123456789X", "San blas", "pepemola@gmail.com",696969696,"VictoriaPradasLaguna","123456789X");
     Ruta j(1, "Bosque","Accesible", "Basico", 1.3, 2);
     Ruta i(2, "Rio", "Accesible", "medio",1.5,1.3);
-    if( m.identificacion()==0){
+    int menu=0;
+    /*if( m.identificacion()==0){
         return 0;
+    }*/
+
+    while(menu!=5){
+    cout<<endl<<endl;
+    cout<<"MENU:"<<endl;
+    cout<<"1. Crear una ruta"<<endl;
+    cout<<"2. Crear una ruta introduciendo los datos."<<endl;
+    cout<<"3. Visualiza las rutas existentes."<<endl;
+    cout<<"4. Cambiar estado de una ruta determinada."<<endl;
+    cout<<"5. Visualizar visitantes. "<<endl;
+    cout<<"6. Salir"<<endl;
+    cin>>menu;
+
+    cout<<endl<<endl;
+
+    switch(menu){
+        case 1:     
+            cout<<"1. Crear una ruta"<<endl;
+            m.crearRuta(j);
+            m.crearRuta(i);
+            m.escribeRutas();
+            cout<<endl;
+            cout<<"Las rutas existentes son:"<<endl;
+            m.visualizarRutas();
+        break;
+
+        case 2:
+            cout<<"2. Crear una ruta introduciendo los datos."<<endl;
+            m.crearRuta(); 
+            m.escribeRutas();
+            cout<<"Las rutas existentes son:"<<endl;
+            m.visualizarRutas();
+        break;
+
+        case 3:
+            cout<<"3. Visualiza las rutas existentes."<<endl;
+            m.visualizarRutas();
+        break;
+
+        case 4:
+            cout<<"4. Cambiar estado de una ruta determinada."<<endl;
+            m.cambiarEstadoRuta(i);
+            m.cambiarEstadoRuta(j);
+            m.escribeRutas();
+        break;
+
+        case 5: 
+            cout<<"5. Visualizar visitantes. "<<endl;
+            m.visualizarVisitantes();
+        break;
+        case 6:
+            exit(EXIT_FAILURE);
+        break;
+
     }
-    m.crearRuta(j);
-    m.crearRuta(i);
-    m.escribeRutas();
-    m.visualizarRutas();
-    m.cambiarEstadoRuta(i);
-    m.cambiarEstadoRuta(j);
+    }
+
+   
+   
     return 0;
 }

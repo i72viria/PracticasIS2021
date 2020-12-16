@@ -24,7 +24,7 @@ class Reserva{
 
         //MODIFICADOR Y OBSERVADOR DNI RESERVA
         inline void setDniReserva(string dni_reserva){dni_reserva_=dni_reserva;}
-        inline string getDniReserva(){return dni_reserva_}
+        inline string getDniReserva(){return dni_reserva_;}
 
         //MODIFICADOR Y OBSERVADOR TIPO RUTA
         inline void setTipoRuta(string tipo_ruta){tipo_ruta_=tipo_ruta;}
