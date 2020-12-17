@@ -34,8 +34,8 @@ TEST(Ruta, ConstructorParametros) {
   EXPECT_EQ("Valle Encantado", j.getNombre());
   EXPECT_EQ("Accesible", j.getEstado());
   EXPECT_EQ("Media", j.getDificultad());
-  EXPECT_EQ(5.7 j.getLongitud());
-  EXPECT_EQ("3", j.getDuracion());
+  EXPECT_FLOAT_EQ(5.7, j.getLongitud());
+  EXPECT_FLOAT_EQ(3, j.getDuracion());
 }
 
 TEST(Ruta, setCodigoygetCodigo) {
@@ -46,31 +46,31 @@ TEST(Ruta, setCodigoygetCodigo) {
 }
 
 TEST(Ruta, setEstadoygetEstado) {
-  Ruta j(33,"Abierto");
+  Ruta j(33,"Valle Encantado","Abierto");
   EXPECT_EQ("Abierto", j.getEstado());
   j.setEstado("Cerrado");
   EXPECT_EQ("Cerrado", j.getEstado());
 }
 
 TEST(Ruta, setDificultadygetDificultad) {
-  Ruta j(33,"Abierto","Dificil");
+  Ruta j(33,"Valle Encantado","Abierto","Dificil");
   EXPECT_EQ("Dificil", j.getDificultad());
   j.setDificultad("Facil");
   EXPECT_EQ("Facil", j.getDificultad());
 }
 
 TEST(Ruta, setLongitudygetLongitud) {
-  Ruta j(33,"Abierto","Dificil",1.7);
-  EXPECT_EQ(1.7, j.getLongitud());
+  Ruta j(33,"Valle Encantado","Abierto","Dificil",1.7);
+  EXPECT_FLOAT_EQ(1.7, j.getLongitud());
   j.setLongitud(19.6);
-  EXPECT_EQ(19.6, j.getLongitud());
+  EXPECT_FLOAT_EQ(19.6, j.getLongitud());
 }
 
 TEST(Ruta, setDuracionygetDuracion) {
-  Ruta j(33,"Abierto","Dificil",1.7,2.30);
-  EXPECT_EQ(2.30, j.getDuracion());
+  Ruta j(33,"Valle Encantado","Abierto","Dificil",1.7,2.30);
+  EXPECT_FLOAT_EQ(2.30, j.getDuracion());
   j.setDuracion(1.45);
-  EXPECT_EQ(1.45, j.getDuracion());
+  EXPECT_FLOAT_EQ(1.45, j.getDuracion());
 }
 /*
 TEST(Ruta, getRutas) {

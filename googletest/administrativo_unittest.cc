@@ -27,12 +27,10 @@ TEST(Administrativo, ConstructorParametrosDefecto) {
   EXPECT_EQ("", j.getDni());
   EXPECT_EQ("", j.getDireccion());
   EXPECT_EQ(0, j.getTelefono());
-  EXPECT_EQ("", j.getUsuario());
-  EXPECT_EQ("", j.getContrasena());
 }
 
 TEST(Administrativo, ConstructorParametros) {
-  Administrativo j("Alvaro","Roldan","Lucena","123456789X","Cordoba","i92rolua@uco.es",123456789,"AlvaroRoldanLucena","123456789X");
+  Administrativo j("Alvaro","Roldan","Lucena","123456789X","Cordoba","i92rolua@uco.es",123456789);
   
   EXPECT_EQ("Alvaro", j.getNombre());
   EXPECT_EQ("Roldan", j.getApellido1());
@@ -40,8 +38,6 @@ TEST(Administrativo, ConstructorParametros) {
   EXPECT_EQ("123456789X", j.getDni());
   EXPECT_EQ("Cordoba", j.getDireccion());
   EXPECT_EQ(123456789, j.getTelefono());
-  EXPECT_EQ("AlvaroRoldanLucena", j.getUsuario());
-  EXPECT_EQ("123456789X", j.getContrasena());
 }
 
 TEST(Administrativo, setNombreygetNombre) {
@@ -102,52 +98,29 @@ TEST(Administrativo, setTelefonoygetTelefono) {
 }
 
 TEST(Administrativo, getUsuario) {
-  Administrativo j("Pepe","Rodriguez","Roldan","123X","Madrid","pepe@uco.es",123,"PepeRodriguezRoldan");
+  Administrativo j("Pepe","Rodriguez","Roldan","123X","Madrid","pepe@uco.es",123);
 
   EXPECT_EQ("PepeRodriguezRoldan", j.getUsuario());
   j.setNombre("Paco");
   j.setApellido1("Lozano");
   j.setApellido2("Laguna");
+  j.setUsuario();
   EXPECT_EQ("PacoLozanoLaguna", j.getUsuario());
 }
 TEST(Administrativo, getContrasena) {
-  Administrativo j("Pepe","Rodriguez","Roldan","123X","Madrid","pepe@uco.es",123,"PepeRodriguezRoldan","124X");
+  Administrativo j("Pepe","Rodriguez","Roldan","123X","Madrid","pepe@uco.es",123);
 
   EXPECT_EQ("123X", j.getContrasena());
   j.setDni("968A");
+  j.setContrasena();
   EXPECT_EQ("968A", j.getContrasena());
 }
 
-/*
-TEST(Jugador, setApuestasygetApuestas) {
-  Jugador j("33XX", "1");
-  string nomfich=j.getDNI()+".txt";
-  ofstream salida(nomfich.c_str());
-  salida << 1 << "," << "10" << "," << 15<< "\n";
-  salida << 2 << "," << "rojo" << "," << 25<< "\n";
-  salida << 3 << "," << "par" << "," << 35<< "\n";
-  salida << 4 << "," << "bajo" << "," << 45<< "\n";
-  salida.close();
-  list<Apuesta> l;
-  j.setApuestas();
-  l= j.getApuestas();
-  EXPECT_EQ(4, l.size());
-  list<Apuesta>::iterator i;
-  i=l.begin();
-  EXPECT_EQ(1, (*i).tipo);
-  EXPECT_EQ("10", (*i).valor);
-  EXPECT_EQ(15, (*i).cantidad);
-  i++;
-  EXPECT_EQ(2, (*i).tipo);
-  EXPECT_EQ("rojo", (*i).valor);
-  EXPECT_EQ(25, (*i).cantidad);
-  i++;
-  EXPECT_EQ(3, (*i).tipo);
-  EXPECT_EQ("par", (*i).valor);
-  EXPECT_EQ(35, (*i).cantidad);
-  i++;
-  EXPECT_EQ(4, (*i).tipo);
-  EXPECT_EQ("bajo", (*i).valor);
-  EXPECT_EQ(45, (*i).cantidad);
+TEST(Administrativo, identificacion) {
+  Administrativo j("Pepe","Rodriguez","Roldan","123X","Madrid","pepe@uco.es",123);
+
+  EXPECT_TRUE(j.identificacion());
+  EXPECT_FALSE(j.identificacion());
 }
-*/
+
+
