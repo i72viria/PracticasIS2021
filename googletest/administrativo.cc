@@ -190,7 +190,7 @@ void Administrativo::editarOanadirInformacion()
 {
     //NECESITO LA CLASE PARQUE;
 }
-
+/*
 
 int main()
 {
@@ -223,3 +223,4 @@ int main()
 
     return 0;    
 }
+*/

@@ -33,7 +33,7 @@ class Administrativo
         //MODIFICADORES
         inline void setNombre(string nombre){nombreA=nombre;}
         inline void setApellido1(string apellido1){apellido1A=apellido1;}
-        inline void setApeliido2(string apellido2){apellido2A=apellido2;}
+        inline void setApellido2(string apellido2){apellido2A=apellido2;}
         inline void setDni(string dni){dniA=dni;}
         inline void setDireccion(string direccion){direccionA=direccion;}
         inline void setEmail(string email){emailA=email;}

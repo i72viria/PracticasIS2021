@@ -14,7 +14,7 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR = C:\Users\arold\Desktop\is\PRACTICA 4\github\PracticasIS2021-Equipo21-\googletest
+GTEST_DIR = /home/alvaro/Escritorio/IS/PracticasIS2021-Equipo21-/googletest
 
 # Where to find user code.
 # USER_DIR = ../samples
@@ -73,11 +73,11 @@ gtest_main.a : gtest-all.o gtest_main.o
 
 ruta.o : ruta.cc ruta.h
 
-administrativo.o: administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
-
 reserva.o: reserva.cc reserva.h
 
 Visitante.o: Visitante.cc Visitante.h
+
+administrativo.o: administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
 
 ruta_unittest.o : ruta.h ruta.cc
 

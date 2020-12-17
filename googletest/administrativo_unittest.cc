@@ -1,4 +1,4 @@
-// jugador_unittest.cc: Juan A. Romero
+// administrativo_unittest.cc: Álvaro Roldán Lucena
 // A sample program demonstrating using Google C++ testing framework.
 //
 // This sample shows how to write a more complex unit test for a class
