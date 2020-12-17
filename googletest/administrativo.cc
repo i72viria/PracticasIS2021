@@ -9,7 +9,7 @@ Administrativo::Administrativo(string nombre, string apellido1, string apellido2
 {
     setNombre(nombre);
     setApellido1(apellido1);
-    setApeliido2(apellido2);
+    setApellido2(apellido2);
     setDni(dni);
     setDireccion(direccion);
     setEmail(email);

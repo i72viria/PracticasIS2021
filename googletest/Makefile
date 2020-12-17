@@ -14,7 +14,7 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR = ......\PracticasIS2021-Equipo21-\googletest
+GTEST_DIR = C:\Users\arold\Desktop\is\PRACTICA 4\github\PracticasIS2021-Equipo21-\googletest
 
 # Where to find user code.
 # USER_DIR = ../samples
@@ -29,7 +29,7 @@ CXXFLAGS += -g -Wall -Wextra -pthread -std=gnu++11
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = persona_unittest crupier_unittest jugador_unittest
+TESTS = ruta_unittest administrativo_unittest
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -71,24 +71,21 @@ gtest_main.a : gtest-all.o gtest_main.o
 # gtest_main.a, depending on whether it defines its own main()
 # function.
 
-persona.o : persona.cc persona.h
+ruta.o : ruta.cc ruta.h
 
-crupier.o: crupier.cc crupier.h persona.cc persona.h
+administrativo.o: administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
 
-jugador.o: jugador.cc jugador.h persona.cc persona.h
+reserva.o: reserva.cc reserva.h
 
-persona_unittest.o : persona_unittest.cc persona.h persona.cc
+Visitante.o: Visitante.cc Visitante.h
 
-crupier_unittest.o : crupier_unittest.cc crupier.cc crupier.h persona.cc persona.h
+ruta_unittest.o : ruta.h ruta.cc
 
-jugador_unittest.o : jugador_unittest.cc jugador.cc jugador.h
+administrativo_unittest.o : administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
 
-persona_unittest : persona.o persona_unittest.o gtest_main.a
+ruta_unittest : ruta.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 	
-crupier_unittest : crupier.o persona.o crupier_unittest.o gtest_main.a
-	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
-
-jugador_unittest : jugador.o persona.o jugador_unittest.o gtest_main.a
+administrativo_unittest : administrativo.o reserva.o Visitante.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 
