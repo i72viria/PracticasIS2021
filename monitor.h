@@ -29,7 +29,7 @@ class Monitor{
     public:
         //CONSTRUCTOR CLASE MONITOR
         Monitor(string nombreM="", string apellido1M="", string apellido2M="",
-            string dniM="", string direccionM="",string emailM="", int telefonoM=0, string usuario="", string contrasena="");
+            string dniM="", string direccionM="",string emailM="", int telefonoM=0);
         //MODIFICADOR Y OBSERVADOR NOMBRE MONITOR
         inline void setNombreM(string nombreM){nombreM_=nombreM;}
         inline string getNombreM(){return nombreM_;}
@@ -56,14 +56,14 @@ class Monitor{
 
         //MODIFICADOR Y OBSERVADOR TELEFONO MONITOR
         inline void setTelefonoM(int telefonoM){telefonoM_=telefonoM;}
-        inline int TelefonoM()const{return telefonoM_;}
+        inline int getTelefonoM()const{return telefonoM_;}
 
         //MODIFICADOR Y OBSERVADOR USUARIO MONITOR
-        inline void setUsuario(string usuario){usuario=getNombreM()+getApellido1M()+getApellido2M(); usuario_= usuario;}
+        inline void setUsuario(){string usuario=getNombreM()+getApellido1M()+getApellido2M(); usuario_= usuario;}
         inline string getUsuario()const{return usuario_;}
 
         //MODIFICADOR Y OBSERVADOR CONSTRASEÑA MONITOR
-        inline void setContrasena(string contrasena){contrasena=getDniM(); contrasena_=contrasena;}   
+        inline void setContrasena(){string contrasena=getDniM(); contrasena_=contrasena;}   
         inline string getContrasena()const{return contrasena_;}
 
         //LISTA RUTAS Y VISITANTES

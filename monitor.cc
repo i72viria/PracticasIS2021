@@ -3,16 +3,21 @@
 
 
 Monitor::Monitor(string nombreM, string apellido1M, string apellido2M,
-    string dniM, string direccionM,string emailM, int telefonoM, string usuario, string contrasena){
+    string dniM, string direccionM,string emailM, int telefonoM){
         setNombreM(nombreM);
         setApellido1M(apellido1M);
         setApellido2M(apellido2M);
         setDniM(dniM);
         setDireccionM(direccionM);
         setEmailM(emailM);
+        setApellido1M(apellido1M);
+        setApellido2M(apellido2M);
+        setDniM(dniM);
+        setDireccionM(direccionM);
+        setEmailM(emailM);
         setTelefonoM(telefonoM);
-        setUsuario(usuario);
-        setContrasena(contrasena);
+        setUsuario();
+        setContrasena();
 }
 
 
@@ -174,7 +179,6 @@ void Monitor::visualizarRutas(){
     cout<<"Introduce el nuevo estado de la ruta"<<endl;
     cin>>newestado;
     cout<<endl;
-    int a=0;
 
         for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
             if(i->getCodigo()== r.getCodigo()){
@@ -228,73 +232,3 @@ void Monitor::visualizarVisitantes(){
 
 
  
-
-int main()
-{
-    Monitor m("Victoria","Pradas","Laguna","123456789X", "San blas", "pepemola@gmail.com",696969696,"VictoriaPradasLaguna","123456789X");
-    Ruta j(1, "Bosque","Accesible", "Basico", 1.3, 2);
-    Ruta i(2, "Rio", "Accesible", "medio",1.5,1.3);
-    int menu=0;
-    /*if( m.identificacion()==0){
-        return 0;
-    }*/
-
-    while(menu!=5){
-    cout<<endl<<endl;
-    cout<<"MENU:"<<endl;
-    cout<<"1. Crear una ruta"<<endl;
-    cout<<"2. Crear una ruta introduciendo los datos."<<endl;
-    cout<<"3. Visualiza las rutas existentes."<<endl;
-    cout<<"4. Cambiar estado de una ruta determinada."<<endl;
-    cout<<"5. Visualizar visitantes. "<<endl;
-    cout<<"6. Salir"<<endl;
-    cin>>menu;
-
-    cout<<endl<<endl;
-
-    switch(menu){
-        case 1:     
-            cout<<"1. Crear una ruta"<<endl;
-            m.crearRuta(j);
-            m.crearRuta(i);
-            m.escribeRutas();
-            cout<<endl;
-            cout<<"Las rutas existentes son:"<<endl;
-            m.visualizarRutas();
-        break;
-
-        case 2:
-            cout<<"2. Crear una ruta introduciendo los datos."<<endl;
-            m.crearRuta(); 
-            m.escribeRutas();
-            cout<<"Las rutas existentes son:"<<endl;
-            m.visualizarRutas();
-        break;
-
-        case 3:
-            cout<<"3. Visualiza las rutas existentes."<<endl;
-            m.visualizarRutas();
-        break;
-
-        case 4:
-            cout<<"4. Cambiar estado de una ruta determinada."<<endl;
-            m.cambiarEstadoRuta(i);
-            m.cambiarEstadoRuta(j);
-            m.escribeRutas();
-        break;
-
-        case 5: 
-            cout<<"5. Visualizar visitantes. "<<endl;
-            m.visualizarVisitantes();
-        break;
-        case 6:
-            exit(EXIT_FAILURE);
-        break;
-
-    }
-    }
-
-   
-   
-    return 0;
-}
