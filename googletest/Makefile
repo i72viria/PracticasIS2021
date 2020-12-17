@@ -77,15 +77,15 @@ reserva.o: reserva.cc reserva.h
 
 Visitante.o: Visitante.cc Visitante.h
 
-administrativo.o: administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
+administrativo.o:  administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
 
-ruta_unittest.o : ruta.h ruta.cc
+ruta_unittest.o : ruta_unittest.cc ruta.h ruta.cc 
 
-administrativo_unittest.o : administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
+administrativo_unittest.o : administrativo_unittest.cc administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h 
 
-ruta_unittest : ruta.o gtest_main.a
+ruta_unittest : ruta.o ruta_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 	
-administrativo_unittest : administrativo.o reserva.o Visitante.o gtest_main.a
+administrativo_unittest :administrativo_unittest.o administrativo.o reserva.o Visitante.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 
