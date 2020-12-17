@@ -5,7 +5,7 @@
 
 using namespace std;
 
-Administrativo::Administrativo(string nombre, string apellido1, string apellido2, string dni, string direccion,string email, int telefono, string usuario, string contrasena)
+Administrativo::Administrativo(string nombre, string apellido1, string apellido2, string dni, string direccion,string email, int telefono)
 {
     setNombre(nombre);
     setApellido1(apellido1);
@@ -14,8 +14,8 @@ Administrativo::Administrativo(string nombre, string apellido1, string apellido2
     setDireccion(direccion);
     setEmail(email);
     setTelefono(telefono);
-    setUsuario(usuario);
-    setContrasena(contrasena);
+    setUsuario();
+    setContrasena();
 }
 
 bool Administrativo::identificacion()
@@ -190,7 +190,7 @@ void Administrativo::editarOanadirInformacion()
 {
     //NECESITO LA CLASE PARQUE;
 }
-
+/*
 
 int main()
 {
@@ -223,3 +223,4 @@ int main()
 
     return 0;    
 }
+*/

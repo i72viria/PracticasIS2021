@@ -28,7 +28,7 @@ class Administrativo
 
     public:
         Administrativo(string nombre="", string apellido1="", string apellido2="", string dni="",
-        string direccion="",string email="", int telefono=0, string usuario="", string contrasena="");
+        string direccion="",string email="", int telefono=0);
 
         //MODIFICADORES
         inline void setNombre(string nombre){nombreA=nombre;}
@@ -38,8 +38,8 @@ class Administrativo
         inline void setDireccion(string direccion){direccionA=direccion;}
         inline void setEmail(string email){emailA=email;}
         inline void setTelefono(int telefono){telefonoA=telefono;}
-        inline void setUsuario(string usuario){usuario=getNombre()+getApellido1()+getApellido2(); usuario_= usuario;}
-        inline void setContrasena(string contrasena){contrasena=getDni(); contrasena_=contrasena;}
+        inline void setUsuario(){string usuario=getNombre()+getApellido1()+getApellido2(); usuario_= usuario;}
+        inline void setContrasena(){string contrasena=getDni(); contrasena_=contrasena;}
 
         //OBSERVADORES       
         inline string getNombre()const{return nombreA;}
