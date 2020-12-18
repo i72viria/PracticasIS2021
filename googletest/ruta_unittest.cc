@@ -72,10 +72,10 @@ TEST(Ruta, setDuracionygetDuracion) {
   j.setDuracion(1.45);
   EXPECT_FLOAT_EQ(1.45, j.getDuracion());
 }
-/*
+
 TEST(Ruta, getRutas) {
   Ruta j;
   j.getRutas();
   
 }
-*/
+
