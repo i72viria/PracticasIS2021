@@ -19,26 +19,6 @@ TEST(Monitor, Constructor) {
   EXPECT_EQ("", m.getContrasena());
 }
 
-//ESTE TEST FUNCIONA PERO DEBEMOS INTRODUCIR PRIMERO MAL LA IDENTIFICACIÓN Y 
-// POSTERIORMENTE CORRECTA E IDENTICAMENTE EL USUARIO Y CONTRASEÑA
-
-
-/*
-// Tests funcion Identificacion
-TEST(Monitor, Identificacion) {
-  Monitor m("Victoria","Pradas","Laguna","123456789X", "San blas", "pepemola@gmail.com",696969696);
-    cout<<endl;
-    cout<<"Identificase con datos erroneos"<<endl<<endl;
-   
-    EXPECT_FALSE(m.identificacion());
-    cout<<endl;
-    cout<<"Identificase correctamente"<<endl;
-    cout<<"Usuario:  VictoriaPradasLaguna\n"<<endl;
-    cout<<"Contrasena:  123456789X"<<endl;
-    EXPECT_TRUE(m.identificacion());
-    
-}
-*/
 
 // Tests modificadores y constructores
 TEST(Monitor, ModificadoresObservadores) {
@@ -177,3 +157,25 @@ TEST(Monitor, cambiarEstado){
   EXPECT_EQ("Mantenimiento", (--m.getRutas().end())->getEstado());
 
 }
+
+
+//ESTE TEST FUNCIONA PERO DEBEMOS INTRODUCIR PRIMERO MAL LA IDENTIFICACIÓN Y 
+// POSTERIORMENTE CORRECTA E IDENTICAMENTE EL USUARIO Y CONTRASEÑA
+
+
+/*
+// Tests funcion Identificacion
+TEST(Monitor, Identificacion) {
+  Monitor m("Victoria","Pradas","Laguna","123456789X", "San blas", "pepemola@gmail.com",696969696);
+    cout<<endl;
+    cout<<"Identificase con datos erroneos"<<endl<<endl;
+   
+    EXPECT_FALSE(m.identificacion());
+    cout<<endl;
+    cout<<"Identificase correctamente"<<endl;
+    cout<<"Usuario:  VictoriaPradasLaguna\n"<<endl;
+    cout<<"Contrasena:  123456789X"<<endl;
+    EXPECT_TRUE(m.identificacion());
+    
+}
+*/
