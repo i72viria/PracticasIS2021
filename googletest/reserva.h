@@ -29,6 +29,9 @@ class Reserva{
         //MODIFICADOR Y OBSERVADOR TIPO RUTA
         inline void setTipoRuta(string tipo_ruta){tipo_ruta_=tipo_ruta;}
         inline string getTipoRuta(){return tipo_ruta_;}
+
+        //FUNCIONES
+        void getReservas();      //FUNCION QUE MUESTRA LAS RESERVAS
 };
 
 #endif
