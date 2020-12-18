@@ -2,6 +2,7 @@
 #include "reserva.h"
 #include <iostream>
 #include "Visitante.h"
+#include "parque.h"
 
 using namespace std;
 
@@ -98,6 +99,195 @@ void Administrativo::setVisitante()
     visitantes_.push_back(aux);
 }
 
+void Administrativo::modificaInformacion(Parque r)
+{
+    cout<<"\nQue elemento desea modificar del parque"<<r.getNombre()<<" ?"<<endl;
+    int menu=0;
+    
+    string nombre,fecha, localizacion, horario;
+    float superficie;
+    int telefono;
+    
+    while(menu!=7)
+    {
+        cout<<"1.Nombre"<<endl;
+        cout<<"2.Localizacion"<<endl;
+        cout<<"3.Superficie"<<endl;
+        cout<<"4.Fecha de reconcomimiento de Parque Natural"<<endl;
+        cout<<"5.Telefono del Parque"<<endl;
+        cout<<"6.Horario"<<endl;
+        cout<<"7.EXIT"<<endl;
+        cin>>menu;
+
+        switch (menu)
+        {
+            case 1:
+            {
+                string NewName;
+                cout<<"Introduce el nuevo nombre del parque: "<<endl;
+                cin>>NewName;
+                cout<<endl;
+
+                for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++)
+                {
+                    if(i->getNombre()== r.getNombre())
+                    {
+                        localizacion=r.getLocalizacion();
+                        superficie=r.getSuperficie();
+                        fecha=r.getFecha_reconocimiento();
+                        telefono=r.getTelefono_parque();
+                        horario=r.getHorario();
+                        cout<<"Actualizando..."<<endl;
+                        cout<<"Parque actualizado "<<NewName<<", "<<localizacion<<", "<<superficie<<", "<<fecha<<", "<<telefono<<", "<<horario<<"\n";
+                    }
+                }
+                string nombre=r.getNombre();
+                deleteDatos(nombre);
+                Parque aux(NewName, localizacion, superficie, fecha, telefono, horario);
+                datos_.push_back(aux);
+            }
+            break;
+    
+            case 2:
+            {
+                string NewLocation;
+                cout<<"Introduce la nueva localizacion del parque: "<<endl;
+                cin>>NewLocation;
+                cout<<endl;
+
+                for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++)
+                {
+                    if(i->getNombre()== r.getNombre())
+                    {
+                        nombre=r.getNombre();
+                        superficie=r.getSuperficie();
+                        fecha=r.getFecha_reconocimiento();
+                        telefono=r.getTelefono_parque();
+                        horario=r.getHorario();
+                        cout<<"Actualizando..."<<endl;
+                        cout<<"Parque actualizado "<<nombre<<", "<<NewLocation<<", "<<superficie<<", "<<fecha<<", "<<telefono<<", "<<horario<<"\n";
+                    }
+                }   
+                deleteDatos(nombre);
+                Parque aux1(nombre, NewLocation,superficie, fecha, telefono, horario);
+                datos_.push_back(aux1);
+            }
+            break;
+
+            case 3:
+            {
+                float NewSurface;
+                cout<<"Introduce la nueva superficie del parque: "<<endl;
+                cin>>NewSurface;
+                cout<<endl;
+
+                for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++)
+                {
+                    if(i->getNombre()== r.getNombre())
+                    {
+                        nombre=r.getNombre();
+                        localizacion=r.getLocalizacion();
+                        fecha=r.getFecha_reconocimiento();
+                        telefono=r.getTelefono_parque();
+                        horario=r.getHorario();
+                        cout<<"Actualizando..."<<endl;
+                        cout<<"Parque actualizado "<<nombre<<", "<<localizacion<<", "<<NewSurface<<", "<<fecha<<", "<<telefono<<", "<<horario<<"\n";
+                    }
+                }   
+                deleteDatos(nombre);
+                Parque aux2(nombre, localizacion, NewSurface, fecha, telefono, horario);
+                datos_.push_back(aux2);
+            }
+            break;
+
+            case 4:
+            {
+                string NewDate;
+                cout<<"Introduce la nueva fecha del reconocimiento del parque: "<<endl;
+                cin>>NewDate;
+                cout<<endl;
+
+                for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++)
+                {
+                    if(i->getNombre()== r.getNombre())
+                    {
+                        nombre=r.getNombre();
+                        localizacion=r.getLocalizacion();
+                        superficie=r.getSuperficie();
+                        telefono=r.getTelefono_parque();
+                        horario=r.getHorario();
+                        cout<<"Actualizando..."<<endl;
+                        cout<<"Parque actualizado "<<nombre<<", "<<localizacion<<", "<<superficie<<", "<<NewDate<<", "<<telefono<<", "<<horario<<"\n";
+                    }
+                }   
+                deleteDatos(nombre);
+                Parque aux3(nombre, localizacion, superficie, NewDate, telefono, horario);
+                datos_.push_back(aux3);
+            }
+            break;
+
+            case 5:
+            {
+                int NewPhoneNumber;
+                cout<<"Introduce el nuevo numero de telefono del parque: "<<endl;
+                cin>>NewPhoneNumber;
+                cout<<endl;
+
+                for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++)
+                {
+                    if(i->getNombre()== r.getNombre())
+                    {
+                        nombre=r.getNombre();
+                        localizacion=r.getLocalizacion();
+                        superficie=r.getSuperficie();
+                        fecha=r.getFecha_reconocimiento();
+                        horario=r.getHorario();
+                        cout<<"Actualizando..."<<endl;
+                        cout<<"Parque actualizado "<<nombre<<", "<<localizacion<<", "<<superficie<<", "<<fecha<<", "<<NewPhoneNumber<<", "<<horario<<"\n";
+                    }
+                }   
+                deleteDatos(nombre);
+                Parque aux4(nombre, localizacion, superficie, fecha, NewPhoneNumber, horario);
+                datos_.push_back(aux4);
+            }
+            break;
+
+            case 6:
+            {
+                string NewSchedule;
+                cout<<"Introduce el nuevo horario del parque: "<<endl;
+                cin>>NewSchedule;
+                cout<<endl;
+
+                for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++)
+                {
+                    if(i->getNombre()== r.getNombre())
+                    {
+                        nombre=r.getNombre();
+                        localizacion=r.getLocalizacion();
+                        superficie=r.getSuperficie();
+                        fecha=r.getFecha_reconocimiento();
+                        telefono=r.getTelefono_parque();
+                        cout<<"Actualizando..."<<endl;
+                        cout<<"Parque actualizado "<<nombre<<", "<<localizacion<<", "<<superficie<<", "<<fecha<<", "<<telefono<<", "<<NewSchedule<<"\n";
+                    }
+                }   
+                deleteDatos(nombre);
+                Parque aux5(nombre, localizacion, superficie, fecha, telefono, NewSchedule);
+                datos_.push_back(aux5);
+            }
+            break;
+
+            default:
+            {
+                cout<<"Numero incorretco"<<endl;
+            }
+            break;
+        }
+    }
+}
+
+
 //FUNCIONES DE APOYO
 
 void Administrativo::escribeReservas(){
@@ -179,19 +369,37 @@ void Administrativo::visualizarVisitantes(){
 }
 
 
+bool Administrativo::crearParque(Parque r){
+    for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++){
+        if(i->getNombre()==r.getNombre()){
+            cout<<"ERROR, Parque existente."<<endl;
+            return false;
+        }
+    }
+    
+    datos_.push_back(r);
+    cout<<"Parque creado con exito"<<endl;
+    return true;   
+}
+
+int Administrativo::deleteDatos(string nombre){
+    if(datos_.empty()){
+        return -1;
+    }
+    for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++){
+        if(i->getNombre()== nombre){
+            datos_.erase(i);
+            return 1;
+        }
+    }
+    return -2;
+}
+
+
 /////////////////////////////////////////////////////////////////////////////
 
-void Administrativo::modificaInformacion()
-{
-    //NECESITO LA CLASE PARQUE;
-}
 
-void Administrativo::editarOanadirInformacion()
-{
-    //NECESITO LA CLASE PARQUE;
-}
 /*
-
 int main()
 {
     Administrativo i("Alvaro","Roldan","Lucena","123456789X","Codoba","i92rolua@uco.es",123456789,"AlvaroRoldanLucena","123456789X");

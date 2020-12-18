@@ -8,6 +8,7 @@
 #include <list>
 #include "reserva.h"
 #include "Visitante.h"
+#include "parque.h"
 
 using namespace std;
 
@@ -25,6 +26,7 @@ class Administrativo
         string contrasena_;
         list<Reserva> reservas_;
         list<Visitante> visitantes_;
+        list<Parque> datos_;
 
     public:
         Administrativo(string nombre="", string apellido1="", string apellido2="", string dni="",
@@ -57,14 +59,15 @@ class Administrativo
         bool identificacion();
         bool creaReserva(Reserva y);
         void setVisitante();
-        void modificaInformacion();
-        void editarOanadirInformacion();
+        void modificaInformacion(Parque r);
 
         //FUNCIONES DE APOYO
         void escribeReservas();
         void visualizarReservas();
         void escribeVisitantes();
         void visualizarVisitantes();
+        int deleteDatos(string nombre);
+        bool crearParque(Parque r);
 };
 
 #endif
