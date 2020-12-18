@@ -14,8 +14,7 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR = /home/victoria/Informatica/IS/INGENIERIASOFTWARE/googletest
-
+GTEST_DIR =/home/victoria/Informatica/IS/github/PracticasIS2021-Equipo21-/googletest
 # Where to find user code.
 # USER_DIR = ../samples
 
@@ -29,7 +28,7 @@ CXXFLAGS += -g -Wall -Wextra -pthread -std=gnu++11
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = ruta_unittest monitor_unittest administrativo_unittest 
+TESTS = ruta_unittest reserva_unittest monitor_unittest administrativo_unittest 
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -83,11 +82,16 @@ administrativo.o:  administrativo.cc administrativo.h reserva.cc reserva.h Visit
 
 ruta_unittest.o : ruta_unittest.cc ruta.h ruta.cc 
 
+reserva_unittest.o : reserva_unittest.cc reserva.cc reserva.h
+
 monitor_unittest.o : monitor_unittest.cc monitor.cc monitor.h ruta.cc ruta.h 
 
 administrativo_unittest.o : administrativo_unittest.cc administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h 
 
 ruta_unittest : ruta.o ruta_unittest.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+	
+reserva_unittest: reserva_unittest.o reserva.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 	
 monitor_unittest : monitor.o ruta.o monitor_unittest.o gtest_main.a
