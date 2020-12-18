@@ -1,7 +1,7 @@
 #include "monitor.h"
 #include "ruta.h"
 
-
+//CONSTRUCTOR
 Monitor::Monitor(string nombreM, string apellido1M, string apellido2M,
     string dniM, string direccionM,string emailM, int telefonoM){
         setNombreM(nombreM);
@@ -20,7 +20,7 @@ Monitor::Monitor(string nombreM, string apellido1M, string apellido2M,
         setContrasena();
 }
 
-
+//FUNCION IDENTIFICACION
 bool Monitor::identificacion(){
     cout<<"Identificate para acceder: "<<endl;
     string usuarioID, contrasenaID;
@@ -53,7 +53,7 @@ bool Monitor::identificacion(){
 
 }
 
-
+//FUNCION CREAR RUTA
 bool Monitor::crearRuta(Ruta r){
     cout<<"Creando una nueva ruta..."<<endl;
     for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
@@ -67,7 +67,7 @@ bool Monitor::crearRuta(Ruta r){
     return true;   
 }
 
-
+//FUNCION CREAR RUTA PIDIENDO DATOS
 bool Monitor::crearRuta(){
     cout<<"Creando una nueva ruta..."<<endl;
     int codigo;
@@ -98,7 +98,7 @@ bool Monitor::crearRuta(){
     return true;   
 }
 
-
+//FUNCION ELEMINAR RUTA POR CODIGO
 int Monitor::deleteRuta(int codigo){
     if(rutas_.empty()){
         return -1;
@@ -112,7 +112,7 @@ int Monitor::deleteRuta(int codigo){
     return -2;
 }
 
-
+//FUNCION ELIMINAR RUTA
 int Monitor::deleteRuta(Ruta r){
     if(rutas_.empty()){
         return -1;
@@ -126,7 +126,7 @@ int Monitor::deleteRuta(Ruta r){
     return -2;
 }
 
-
+//FUNCION ESCRIBE RUTAS EN UN FICHERO
 void Monitor::escribeRutas(){
     string nomfichero="rutas.txt";
     fstream f;
@@ -142,7 +142,7 @@ void Monitor::escribeRutas(){
     f.close();
 }
 
-
+//FUINCON LEE RUTAS DEL FICHERO
 void Monitor::visualizarRutas(){
     rutas_.clear();
     fstream f;
@@ -170,7 +170,7 @@ void Monitor::visualizarRutas(){
     f.close();
 }
 
-
+//FUNCION CAMBIAR ESTADO Y GUARDARLA EN EL FICHERO
  void Monitor::cambiarEstadoRuta(Ruta r){
     cout<<"\nCambiando el estado de la ruta "<<r.getCodigo()<<" cuyo estado es "<<r.getEstado()<<endl;
     int codigo=0;
@@ -199,7 +199,7 @@ void Monitor::visualizarRutas(){
                 rutas_.push_back(aux);
 }
 
-
+//FUNCION VISUALIZAR LOS VISITANTES EXISTENTES
 void Monitor::visualizarVisitantes(){
     cout<<"\nVisualizando visitantes y características..."<<endl;
     fstream f;
