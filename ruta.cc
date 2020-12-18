@@ -36,10 +36,3 @@ void Ruta::getRutas()
         }
     f.close();
 }
-
-int main()
-{
-    Ruta t;
-    t.getRutas();
-    return 0;
-}
