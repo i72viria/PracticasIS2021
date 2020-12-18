@@ -14,6 +14,7 @@
 #include "administrativo.h"
 #include "reserva.h"
 #include "Visitante.h"
+#include "parque.h"
 #include "gtest/gtest.h"
 
 using namespace std;
@@ -116,11 +117,60 @@ TEST(Administrativo, getContrasena) {
   EXPECT_EQ("968A", j.getContrasena());
 }
 
-TEST(Administrativo, identificacion) {
-  Administrativo j("Pepe","Rodriguez","Roldan","123X","Madrid","pepe@uco.es",123);
+TEST(Administrativo, crearReserva) {
+  
+  Administrativo m;
 
-  EXPECT_TRUE(j.identificacion());
-  EXPECT_FALSE(j.identificacion());
+  Reserva j("12/12/2020","123456789X","Bicicleta");
+  Reserva w("15/08/2020","987654321A","A pie");
+
+  EXPECT_TRUE(m.creaReserva(j));
+  EXPECT_TRUE(m.creaReserva(w));
+
+  EXPECT_FALSE(m.creaReserva(j));
+  EXPECT_FALSE(m.creaReserva(w));
 }
 
 
+TEST(Administrativo, deleteDatos) {
+
+  Administrativo m;
+  string nombre="";
+
+  EXPECT_EQ(-1,m.deleteDatos(nombre));
+  
+  Parque j("Pedroches","Cordoba",540.54,"21/03/1989",123456789,"09:00 a 20:00 L-V");
+
+  m.crearParque(j);
+  nombre=j.getNombre();
+
+  EXPECT_EQ(1,m.deleteDatos(nombre));
+
+  m.crearParque(j);
+  nombre="Pepe";
+  EXPECT_EQ(-2,m.deleteDatos(nombre));
+}
+
+TEST(Administrativo, crearParque) {
+  
+  Administrativo m;
+
+  Parque i("Pedroches","Cordoba",540.54,"21/03/1989",123456789,"09:00 a 20:00 L-V");
+  Parque j("Caminito del Rey","Malaga",320.19,"01/11/19759",987654321,"09:00 a 20:00 L-J y 12:00 a 14:00 S-D");
+
+  EXPECT_TRUE(m.crearParque(i));
+  EXPECT_TRUE(m.crearParque(j));
+
+  EXPECT_FALSE(m.crearParque(i));
+  EXPECT_FALSE(m.crearParque(j));
+}
+
+TEST(Administrativo, identificacion) {
+  Administrativo j("Pepe","Rodriguez","Roldan","123X","Madrid","pepe@uco.es",123);
+
+  cout<<"\n"<<"El usuario es PepeRodriguezRoldan y la contrasena 123X"<<endl;
+
+  EXPECT_TRUE(j.identificacion());
+  cout<<"\n"<<"Ahora introducir mal."<<endl;
+  EXPECT_FALSE(j.identificacion());
+}
