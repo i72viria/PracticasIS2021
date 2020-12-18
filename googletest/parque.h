@@ -35,7 +35,7 @@ using namespace std;
       inline void setNombre(string nombre){nombre_=nombre;}
       inline string getNombre(){return nombre_;}
 
-      inline void setLocalizacion(string localizacion){localizacion_=localizacion}
+      inline void setLocalizacion(string localizacion){localizacion_=localizacion;}
       inline string getLocalizacion(){return localizacion_;}
 
       inline void setSuperficie(float superficie){superficie_=superficie;}
@@ -45,7 +45,7 @@ using namespace std;
       inline string getFecha_reconocimiento(){return fecha_reconocimiento_;}
 
       inline void setTelefono_parque(int telefono_parque){telefono_parque_=telefono_parque;}
-      inline int getTelefono_parque(){return telefono_parque;}
+      inline int getTelefono_parque(){return telefono_parque_;}
 
       inline void setHorario(string horario){horario_=horario;}
       inline string getHorario(){return horario_;}
