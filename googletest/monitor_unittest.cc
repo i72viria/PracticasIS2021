@@ -136,6 +136,21 @@ TEST(Monitor, escribeLeeRutas) {
   ASSERT_EQ(2, (--l.getRutas().end())->getCodigo());
 }
 
+TEST(Monitor, elegirRuta){
+  Monitor m("Victoria","Pradas","Laguna","123456789X", "San blas", "yo@gmail.com",696969696);
+  Ruta r1(15,"Playa","Accesible","Básico",3.2,4.2);
+  Ruta r2(20,"Bosque","Cerrado","Medio",8.2,10.1);
+
+  m.crearRuta(r1);
+  m.crearRuta(r2);
+
+  ASSERT_EQ(2, m.getRutas().size());
+
+  ASSERT_EQ(15,m.elegirRuta(r1));
+  ASSERT_EQ(20,m.elegirRuta(r2));
+
+}
+
 //Test cambiar estado de la ruta
 //DEBE INTRODUCIR CORRECTAMENTE EL ESTADO 
 TEST(Monitor, cambiarEstado){
