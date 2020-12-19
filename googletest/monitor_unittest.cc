@@ -146,8 +146,8 @@ TEST(Monitor, elegirRuta){
 
   ASSERT_EQ(2, m.getRutas().size());
 
-  ASSERT_EQ(15,m.elegirRuta(r1));
-  ASSERT_EQ(20,m.elegirRuta(r2));
+  ASSERT_EQ(15,m.seleccionaRuta(r1));
+  ASSERT_EQ(20,m.seleccionaRuta(r2));
 
 }
 

@@ -199,6 +199,19 @@ void Monitor::visualizarRutas(){
                 rutas_.push_back(aux);
 }
 
+//FUNCION ELIGE RUTA
+int Monitor::seleccionaRuta(Ruta r){
+    int codigo;
+    for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
+        if(i->getCodigo()== r.getCodigo()){
+            codigo=r.getCodigo();
+            cout<<endl<<"Ha seleccionado la ruta con codigo "<<codigo<<endl;
+        }
+    }
+
+    return codigo;
+}
+
 //FUNCION VISUALIZAR LOS VISITANTES EXISTENTES
 void Monitor::visualizarVisitantes(){
     cout<<"\nVisualizando visitantes y características..."<<endl;
@@ -227,18 +240,7 @@ void Monitor::visualizarVisitantes(){
     f.close();
 }
 
-//FUNCION ELIGE RUTA
-int Monitor::elegirRuta(Ruta r){
-    int codigo;
-    for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
-        if(i->getCodigo()== r.getCodigo()){
-            codigo=r.getCodigo();
-            cout<<endl<<"Ha seleccionado la ruta con codigo "<<codigo<<endl;
-        }
-    }
 
-    return codigo;
-}
 
 
 
