@@ -119,7 +119,7 @@ TEST(Monitor, deleteRutaCodigo) {
 TEST(Monitor, escribeLeeRutas) {
  
   Monitor m("Victoria","Pradas","Laguna","123456789X", "San blas", "yo@gmail.com",696969696);
-  Ruta r1(1,"Camino","Accesible","Básico",1.2,1.4);
+  Ruta r1(1,"Camino","Accesible","Avanzado",13.5,18.4);
   Ruta r2(2,"Rio","Mantenimiento","Medio",6.2,8.6);
 
   m.crearRuta(r1); 
@@ -148,7 +148,7 @@ TEST(Monitor, cambiarEstado){
   m.crearRuta(r2);
 
   m.escribeRutas();
-  m.visualizarRutas();
+  //m.visualizarRutas();
   ASSERT_EQ("Accesible", m.getRutas().begin()->getEstado());
   cout<<endl<<"Cambiar estado a <Mantenimiento>"<<endl;
   m.cambiarEstadoRuta(r1);

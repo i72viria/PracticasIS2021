@@ -55,7 +55,7 @@ bool Monitor::identificacion(){
 
 //FUNCION CREAR RUTA
 bool Monitor::crearRuta(Ruta r){
-    cout<<"Creando una nueva ruta..."<<endl;
+    //cout<<"Creando una nueva ruta..."<<endl;
     for(list<Ruta>::iterator i=rutas_.begin();i!=rutas_.end();i++){
         if(i->getCodigo()==r.getCodigo()){
             return false;
@@ -63,7 +63,7 @@ bool Monitor::crearRuta(Ruta r){
     }
     
     rutas_.push_back(r);
-    cout<<"Ruta creada con exito"<<endl;
+    //cout<<"Ruta creada con exito"<<endl;
     return true;   
 }
 
@@ -172,7 +172,7 @@ void Monitor::visualizarRutas(){
 
 //FUNCION CAMBIAR ESTADO Y GUARDARLA EN EL FICHERO
  void Monitor::cambiarEstadoRuta(Ruta r){
-    cout<<"\nCambiando el estado de la ruta "<<r.getCodigo()<<" cuyo estado es "<<r.getEstado()<<endl;
+    //cout<<"\nCambiando el estado de la ruta "<<r.getCodigo()<<" cuyo estado es "<<r.getEstado()<<endl;
     int codigo=0;
     string nombre="", newestado="", dificultad="";
     float longitud=0.0, duracion=0.0;
@@ -187,8 +187,8 @@ void Monitor::visualizarRutas(){
                 dificultad=r.getDificultad();
                 longitud=r.getLongitud();
                 duracion=r.getDuracion();
-                cout<<"Actualizando.."<<endl;
-                cout<<"Ruta actualizada "<<codigo<<" "<<nombre<<" "<<newestado<<" "<<dificultad<<" "<<longitud<<" "<<duracion<<"\n";
+                //cout<<"Actualizando.."<<endl;
+                cout<<"Ruta actualizada   "<<codigo<<" "<<nombre<<" "<<newestado<<" "<<dificultad<<" "<<longitud<<" "<<duracion<<"\n";
 
             }
         }   
