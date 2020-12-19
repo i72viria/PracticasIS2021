@@ -138,7 +138,7 @@ TEST(Administrativo, deleteDatos) {
   ASSERT_EQ(1,m.deleteDatos(nombre));
 
   m.crearParque(j);
-  nombre="Pepe";
+  nombre="Caminito del Rey";
   ASSERT_EQ(-2,m.deleteDatos(nombre));
 }
 

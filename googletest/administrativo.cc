@@ -384,14 +384,17 @@ bool Administrativo::crearParque(Parque r){
 
 int Administrativo::deleteDatos(string nombre){
     if(datos_.empty()){
+        cout<<"La lista está vacía"<<endl;
         return -1;
     }
     for(list<Parque>::iterator i=datos_.begin();i!=datos_.end();i++){
         if(i->getNombre()== nombre){
             datos_.erase(i);
+            cout<<"Parque borrado con éxito"<<endl;
             return 1;
         }
     }
+    cout<<"El nombre del parque dado no existe en la lista."<<endl;
     return -2;
 }
 
