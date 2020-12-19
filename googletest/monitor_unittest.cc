@@ -8,15 +8,15 @@
 TEST(Monitor, Constructor) {
   Monitor m;
   
-  EXPECT_EQ("", m.getNombreM());
-  EXPECT_EQ("", m.getApellido1M());
-  EXPECT_EQ("", m.getApellido2M());
-  EXPECT_EQ("", m.getDniM());
-  EXPECT_EQ("", m.getDireccionM());
-  EXPECT_EQ("", m.getEmailM());
-  EXPECT_EQ(0, m.getTelefonoM());
-  EXPECT_EQ("", m.getUsuario());
-  EXPECT_EQ("", m.getContrasena());
+  ASSERT_EQ("", m.getNombreM());
+  ASSERT_EQ("", m.getApellido1M());
+  ASSERT_EQ("", m.getApellido2M());
+  ASSERT_EQ("", m.getDniM());
+  ASSERT_EQ("", m.getDireccionM());
+  ASSERT_EQ("", m.getEmailM());
+  ASSERT_EQ(0, m.getTelefonoM());
+  ASSERT_EQ("", m.getUsuario());
+  ASSERT_EQ("", m.getContrasena());
 }
 
 
@@ -24,31 +24,31 @@ TEST(Monitor, Constructor) {
 TEST(Monitor, ModificadoresObservadores) {
   Monitor m("Victoria","Pradas","Laguna","123456789X", "San blas", "pepemola@gmail.com",696969696);
   m.setNombreM("Victoria");
-  EXPECT_EQ("Victoria",m.getNombreM());
+  ASSERT_EQ("Victoria",m.getNombreM());
 
   m.setApellido1M("Pradas");
-  EXPECT_EQ("Pradas",m.getApellido1M());
+  ASSERT_EQ("Pradas",m.getApellido1M());
 
   m.setApellido2M("Laguna");
-  EXPECT_EQ("Laguna",m.getApellido2M());
+  ASSERT_EQ("Laguna",m.getApellido2M());
 
   m.setDniM("123456789X");
-  EXPECT_EQ("123456789X",m.getDniM());
+  ASSERT_EQ("123456789X",m.getDniM());
 
   m.setEmailM("i92prlav");
-  EXPECT_EQ("i92prlav", m.getEmailM());
+  ASSERT_EQ("i92prlav", m.getEmailM());
 
   m.setDireccionM("San Juan");
-  EXPECT_EQ("San Juan", m.getDireccionM());
+  ASSERT_EQ("San Juan", m.getDireccionM());
 
   m.setTelefonoM(666885577);
-  EXPECT_EQ(666885577, m.getTelefonoM());
+  ASSERT_EQ(666885577, m.getTelefonoM());
 
   m.setUsuario();
-  EXPECT_EQ("VictoriaPradasLaguna", m.getUsuario()); 
+  ASSERT_EQ("VictoriaPradasLaguna", m.getUsuario()); 
 
   m.setContrasena();
-  EXPECT_EQ("123456789X", m.getContrasena());
+  ASSERT_EQ("123456789X", m.getContrasena());
 }
 
 //Test crea Ruta 
@@ -58,16 +58,16 @@ TEST(Monitor, crearRuta) {
   Ruta r2(2,"Rio","Mantenimiento","Medio",6.2,8.6);
   Ruta r3(3,"Bosque","Cerrado","Avanzado",10.2,13.8);
   
-  EXPECT_TRUE(m.crearRuta(r1));
-  EXPECT_TRUE(m.crearRuta(r2));
-  EXPECT_FALSE(m.getRutas().empty());
-  EXPECT_EQ(2, m.getRutas().size());
-  EXPECT_EQ(1, m.getRutas().begin()->getCodigo());
-  EXPECT_EQ("Camino", m.getRutas().begin()->getNombre());
-  EXPECT_EQ(2, (--m.getRutas().end())->getCodigo());
-  EXPECT_EQ("Rio", (--m.getRutas().end())->getNombre());
-  EXPECT_FALSE(m.crearRuta(r1));
-  EXPECT_FALSE(m.crearRuta(r2));
+  ASSERT_TRUE(m.crearRuta(r1));
+  ASSERT_TRUE(m.crearRuta(r2));
+  ASSERT_FALSE(m.getRutas().empty());
+  ASSERT_EQ(2, m.getRutas().size());
+  ASSERT_EQ(1, m.getRutas().begin()->getCodigo());
+  ASSERT_EQ("Camino", m.getRutas().begin()->getNombre());
+  ASSERT_EQ(2, (--m.getRutas().end())->getCodigo());
+  ASSERT_EQ("Rio", (--m.getRutas().end())->getNombre());
+  ASSERT_FALSE(m.crearRuta(r1));
+  ASSERT_FALSE(m.crearRuta(r2));
 }
 
 
@@ -80,17 +80,17 @@ TEST(Monitor, deleteRuta) {
   m.crearRuta(r1); 
   m.crearRuta(r2);
 
-  EXPECT_EQ(1,m.deleteRuta(r1));
-  EXPECT_EQ(1, m.getRutas().size());
-  EXPECT_EQ(2, m.getRutas().begin()->getCodigo());
-  EXPECT_EQ("Rio", m.getRutas().begin()->getNombre());
-  EXPECT_EQ(1, m.getRutas().size());
+  ASSERT_EQ(1,m.deleteRuta(r1));
+  ASSERT_EQ(1, m.getRutas().size());
+  ASSERT_EQ(2, m.getRutas().begin()->getCodigo());
+  ASSERT_EQ("Rio", m.getRutas().begin()->getNombre());
+  ASSERT_EQ(1, m.getRutas().size());
   r1.setCodigo(3);
-  EXPECT_EQ(-2,m.deleteRuta(r1));
-  EXPECT_EQ(1,m.deleteRuta(r2));
+  ASSERT_EQ(-2,m.deleteRuta(r1));
+  ASSERT_EQ(1,m.deleteRuta(r2));
   
-  EXPECT_EQ(-1,m.deleteRuta(r1));
-  EXPECT_EQ(0, m.getRutas().size());
+  ASSERT_EQ(-1,m.deleteRuta(r1));
+  ASSERT_EQ(0, m.getRutas().size());
 }
 
 
@@ -103,15 +103,15 @@ TEST(Monitor, deleteRutaCodigo) {
   m.crearRuta(r1); 
   m.crearRuta(r2);
 
-  EXPECT_EQ(1,m.deleteRuta(1));
-  EXPECT_EQ(1, m.getRutas().size());
-  EXPECT_EQ(2, m.getRutas().begin()->getCodigo());
-  EXPECT_EQ("Rio", m.getRutas().begin()->getNombre());
-  EXPECT_EQ(1, m.getRutas().size());
-  EXPECT_EQ(-2,m.deleteRuta(3));
-  EXPECT_EQ(1,m.deleteRuta(2));
-  EXPECT_EQ(-1,m.deleteRuta(2));
-  EXPECT_EQ(0, m.getRutas().size());
+  ASSERT_EQ(1,m.deleteRuta(1));
+  ASSERT_EQ(1, m.getRutas().size());
+  ASSERT_EQ(2, m.getRutas().begin()->getCodigo());
+  ASSERT_EQ("Rio", m.getRutas().begin()->getNombre());
+  ASSERT_EQ(1, m.getRutas().size());
+  ASSERT_EQ(-2,m.deleteRuta(3));
+  ASSERT_EQ(1,m.deleteRuta(2));
+  ASSERT_EQ(-1,m.deleteRuta(2));
+  ASSERT_EQ(0, m.getRutas().size());
 }
 
 
@@ -130,10 +130,10 @@ TEST(Monitor, escribeLeeRutas) {
   Monitor l("Maria","Borrador","Lapiz","987654321Y", "San juan", "ella@gmail.com",666998855);
   
   l.visualizarRutas();
-  EXPECT_FALSE(l.getRutas().empty());
-  EXPECT_EQ(2, l.getRutas().size());
-  EXPECT_EQ(1, l.getRutas().begin()->getCodigo());
-  EXPECT_EQ(2, (--l.getRutas().end())->getCodigo());
+  ASSERT_FALSE(l.getRutas().empty());
+  ASSERT_EQ(2, l.getRutas().size());
+  ASSERT_EQ(1, l.getRutas().begin()->getCodigo());
+  ASSERT_EQ(2, (--l.getRutas().end())->getCodigo());
 }
 
 //Test cambiar estado de la ruta
@@ -149,12 +149,12 @@ TEST(Monitor, cambiarEstado){
 
   m.escribeRutas();
   m.visualizarRutas();
-  EXPECT_EQ("Accesible", m.getRutas().begin()->getEstado());
+  ASSERT_EQ("Accesible", m.getRutas().begin()->getEstado());
   cout<<endl<<"Cambiar estado a <Mantenimiento>"<<endl;
   m.cambiarEstadoRuta(r1);
   m.escribeRutas();
   m.visualizarRutas();
-  EXPECT_EQ("Mantenimiento", (--m.getRutas().end())->getEstado());
+  ASSERT_EQ("Mantenimiento", (--m.getRutas().end())->getEstado());
 
 }
 
@@ -170,12 +170,12 @@ TEST(Monitor, Identificacion) {
     cout<<endl;
     cout<<"Identificase con datos erroneos"<<endl<<endl;
    
-    EXPECT_FALSE(m.identificacion());
+    ASSERT_FALSE(m.identificacion());
     cout<<endl;
     cout<<"Identificase correctamente"<<endl;
     cout<<"Usuario:  VictoriaPradasLaguna\n"<<endl;
     cout<<"Contrasena:  123456789X"<<endl;
-    EXPECT_TRUE(m.identificacion());
+    ASSERT_TRUE(m.identificacion());
     
 }
 */
