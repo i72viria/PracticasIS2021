@@ -80,6 +80,7 @@ class Monitor{
         void visualizarRutas();         //Visualiza rutas existentes del parque
         void cambiarEstadoRuta(Ruta r); //Cambia el estado de la ruta.
         void visualizarVisitantes();    //Visualiza datos del visitante
+        int elegirRuta(Ruta r);        //Selecciona la ruta pasada por parametro
 };
 
 #endif
