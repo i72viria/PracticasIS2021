@@ -23,7 +23,7 @@ using namespace std;
       list <Reserva> reservas_;
     public:
       Parque(){}
-      Parque(string nombre,string localizacion,float superficie,string fecha_reconocimiento,int telefono_parque,string horario){
+      Parque(string nombre=",",string localizacion=",",float superficie=0,string fecha_reconocimiento=",",int telefono_parque=0,string horario=","){
         nombre_=nombre;
         localizacion_=localizacion;
         superficie_=superficie;
