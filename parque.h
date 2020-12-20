@@ -51,9 +51,9 @@ using namespace std;
       inline string getHorario(){return horario_;}
 
 
-      string visualizarRutas();
-      string visualizarVisitantesReserva();
-      string mostrarEstadoRuta();
-      void buscarInformacion();
+      void visualizarRutas();
+      void visualizarVisitantesReserva();
+      void mostrarEstadoRuta();
+      void buscarInformacion(Parque r);
 };
 #endif
