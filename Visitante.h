@@ -49,5 +49,6 @@ using namespace std;
         inline void setDiscapacidad(string Discapacidad){Discapacidad_=Discapacidad;}
         inline string getDiscapacidad(){return Discapacidad_;}
 
+        string getDatos();
 };
 #endif
