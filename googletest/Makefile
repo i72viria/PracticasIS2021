@@ -14,7 +14,7 @@
 
 # Points to the root of Google Test, relative to where this file is.
 # Remember to tweak this if you move this file.
-GTEST_DIR =/home/victoria/Informatica/IS/github/PracticasIS2021-Equipo21-/googletest
+GTEST_DIR =/home/alvaro/Escritorio/IS/PracticasIS2021-Equipo21-/googletest
 # Where to find user code.
 # USER_DIR = ../samples
 
@@ -28,7 +28,7 @@ CXXFLAGS += -g -Wall -Wextra -pthread -std=gnu++11
 
 # All tests produced by this Makefile.  Remember to add new tests you
 # created to the list.
-TESTS = ruta_unittest reserva_unittest monitor_unittest administrativo_unittest
+TESTS = ruta_unittest reserva_unittest monitor_unittest parque_unittest visitante_unittest administrativo_unittest
 
 # All Google Test headers.  Usually you shouldn't change this
 # definition.
@@ -80,11 +80,7 @@ Visitante.o: Visitante.cc Visitante.h
 
 monitor.o : monitor.h monitor.cc ruta.cc ruta.h
 
-visitante_unittest.o: visitante_unittest.cc Visitante.cc Visitante.o
-
-parque_unitttest.o: parque_unittest.cc parque.h parque.cc
-
-administrativo.o:  administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
+administrativo.o:  administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h parque.cc parque.h
 
 ruta_unittest.o : ruta_unittest.cc ruta.h ruta.cc
 
@@ -92,7 +88,11 @@ reserva_unittest.o : reserva_unittest.cc reserva.cc reserva.h
 
 monitor_unittest.o : monitor_unittest.cc monitor.cc monitor.h ruta.cc ruta.h
 
-administrativo_unittest.o : administrativo_unittest.cc administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h
+parque_unitttest.o: parque_unittest.cc parque.h parque.cc
+
+visitante_unittest.o: visitante_unittest.cc Visitante.cc
+
+administrativo_unittest.o : administrativo_unittest.cc administrativo.cc administrativo.h reserva.cc reserva.h Visitante.cc Visitante.h parque.cc parque.h
 
 ruta_unittest : ruta.o ruta_unittest.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
@@ -106,7 +106,8 @@ monitor_unittest : monitor.o ruta.o monitor_unittest.o gtest_main.a
 parque_unittest: parque_unittest.o parque.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
 
-visitante_unittest: visitante_unittest.o visitante.o gtest_main.a
-		
-administrativo_unittest :administrativo_unittest.o administrativo.o reserva.o Visitante.o gtest_main.a
+visitante_unittest: visitante_unittest.o Visitante.o gtest_main.a
+	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
+
+administrativo_unittest :administrativo_unittest.o administrativo.o reserva.o Visitante.o parque.o gtest_main.a
 	$(CXX) $(CPPFLAGS) $(CXXFLAGS) $^ -o $@
