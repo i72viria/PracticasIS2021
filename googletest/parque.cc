@@ -1,8 +1,17 @@
 #include "parque.h"
-#include "Visitante.h"
+//#include "Visitante.h"
+
+Parque::Parque(string nombre,string localizacion,float superficie,string fecha_reconocimiento,int telefono_parque,string horario){
+        setNombre(nombre);
+        setLocalizacion(localizacion);
+        setSuperficie(superficie);
+        setFecha_reconocimiento(fecha_reconocimiento);
+        setTelefono_parque(telefono_parque);
+        setHorario(horario);
+}
 
 void Parque::visualizarRutas(){
-    parque_.clear();
+//    parque_.clear();
     fstream f;
     f.open("parque.txt",std::fstream::in);
     if(f.is_open()){
@@ -10,13 +19,13 @@ void Parque::visualizarRutas(){
 
         while(f.getline(nombre,225,',')){
             f.getline(localizacion,225,',');
-            f.getline(superficie,225,'\n');
+            f.getline(superficie,225,',');
             f.getline(fecha_reconocimiento,225,',');
-            f.getline(telefono_parque,225,'\n');
-            f.getline(horario,225,',');
+            f.getline(telefono_parque,225,',');
+            f.getline(horario,225,'\n');
 
-            Parque aux(nombre,localizacion,superficie,fecha_reconocimiento,telefono_parque,horario);
-            parque_.push_back(aux);
+//            Parque aux(nombre,localizacion,atof(superficie),fecha_reconocimiento,atoi(telefono_parque),horario);
+//            parque_.push_back(aux);
             cout<<nombre<<" "<<localizacion<<" "<<fecha_reconocimiento<<" "<<telefono_parque<<" "<<horario<<endl;
         }
     }
@@ -27,7 +36,7 @@ void Parque::visualizarRutas(){
   }
 
 void Parque::visualizarVisitantesReserva(){
-  visitantes_.clear();
+//  visitantes_.clear();
   fstream f;
   f.open("visitantes.txt",std::fstream::in);
   if(f.is_open()){
@@ -41,8 +50,8 @@ void Parque::visualizarVisitantesReserva(){
           f.getline(telefono,225,',');
           f.getline(disca,225,'\n');
 
-          Visitante aux(nombre,apellido1,apellido2,dni,fecha,atoi(telefono),disca);
-          visitantes_.push_back(aux);
+//          Visitante aux(nombre,apellido1,apellido2,dni,fecha,atoi(telefono),disca);
+//          visitantes_.push_back(aux);
           cout<<nombre<<" "<<apellido1<<" "<<apellido2<<" "<<dni<<" "<<fecha<<" "<<telefono<<" "<<disca<<endl;
       }
   }
@@ -53,7 +62,7 @@ void Parque::visualizarVisitantesReserva(){
 }
 
 void Parque::mostrarEstadoRuta(){
-  rutas_.clear();
+//  rutas_.clear();
   fstream f;
   f.open("rutas.txt",std::fstream::in);
   if(f.is_open()){
@@ -66,8 +75,8 @@ void Parque::mostrarEstadoRuta(){
           f.getline(longitud,225,',');
           f.getline(duracion,225,',');
 
-          Ruta aux(codigo,nombre,estado,dificultad,longitud,duracion);
-          rutas_.push_back(aux);
+//          Ruta aux(atoi(codigo),nombre,estado,dificultad,atof(longitud),atof(duracion));
+//          rutas_.push_back(aux);
           cout<<codigo<<" "<<nombre<<" "<<estado<<" "<<dificultad<<" "<<longitud<<" "<<duracion<<endl;
       }
   }
@@ -81,9 +90,12 @@ void Parque::buscarInformacion(Parque r){
   cout<<"\nQue elemento desea buscar del parque"<<r.getNombre()<<" ?"<<endl;
   int menu=0;
 
-  string nombre,fecha, localizacion, horario;
-  float superficie;
-  int telefono;
+  string nombre=r.getNombre();
+  string fecha=r.getFecha_reconocimiento();
+  string localizacion=r.getLocalizacion();
+  string horario=r.getHorario(); 
+  float superficie=r.getSuperficie();
+  int telefono_parque=r.getTelefono_parque();
 
   while(menu!=7)
   {
@@ -118,7 +130,7 @@ void Parque::buscarInformacion(Parque r){
 
           case 4:
           {
-              cout<<"La fecha de reconocimiento del parque es:" <<fecha_reconocimiento<<","<<endl;
+              cout<<"La fecha de reconocimiento del parque es:" <<fecha<<","<<endl;
           }
           break;
 

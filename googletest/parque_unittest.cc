@@ -52,5 +52,6 @@ TEST(Parque,mostrarEstadoRuta){
 //Test buscar Informacion
 TEST(Parque,buscarInformacion){
   Parque p;
-  p.buscarInformacion();
+  Parque j;
+  p.buscarInformacion(j);
 }

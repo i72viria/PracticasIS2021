@@ -6,8 +6,8 @@
 #include <cstdlib>
 #include <fstream>
 #include <list>
-#include "reserva.h"
-#include "ruta.h"
+//#include "reserva.h"
+//#include "ruta.h"
 
 using namespace std;
 
@@ -19,12 +19,12 @@ using namespace std;
       string fecha_reconocimiento_;
       int telefono_parque_;
       string horario_;
-      list <Ruta> rutas_;
-      list <Reserva> reservas_;
-      list <Parque> parque_;
+//      list <Ruta> rutas_;
+//      list <Reserva> reservas_;
+//      list <Parque> parque_;
     public:
-      Parque(){}
-      Parque(string nombre=",",string localizacion=",",float superficie=0,string fecha_reconocimiento=",",int telefono_parque=0,string horario=",");
+      Parque(string nombre="",string localizacion="",float superficie=0,string fecha_reconocimiento="",int telefono_parque=0,string horario="");
+
       inline void setNombre(string nombre){nombre_=nombre;}
       inline string getNombre(){return nombre_;}
 
