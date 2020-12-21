@@ -1,7 +1,7 @@
 #include "Visitante.h"
 
  void Visitante::getDatos(){
-   visitantes_.clear();
+   visitantes.clear();
    fstream f;
    f.open("visitantes.txt",std::fstream::in);
    if(f.is_open()){
@@ -15,8 +15,8 @@
            f.getline(TelefonoV,225,',');
            f.getline(Discapacidad,225,',');
 
-           Visitante aux(NombreV,Apellido1V,Apellido2V,DniV,Fecha_nacimiento,TelefonoV,Discapacidad);
-           visitantes_.push_back(aux);
+
+           visitantes.push_back(aux);
            cout<<NombreV<<" "<<Apellido1V<<" "<<Apellido2V<<" "<<DniV<<" "<<Fecha_nacimiento<<" "<<Discapacidad<<endl;
        }
    }
