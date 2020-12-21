@@ -21,9 +21,10 @@ using namespace std;
       string horario_;
       list <Ruta> rutas_;
       list <Reserva> reservas_;
+      list <Parque> parque_;
     public:
       Parque(){}
-      Parque(string nombre,string localizacion,float superficie,string fecha_reconocimiento,int telefono_parque,string horario){
+      Parque(string nombre=",",string localizacion=",",float superficie=0,string fecha_reconocimiento=",",int telefono_parque=0,string horario=","){
         nombre_=nombre;
         localizacion_=localizacion;
         superficie_=superficie;
@@ -51,9 +52,9 @@ using namespace std;
       inline string getHorario(){return horario_;}
 
 
-      string visualizarRutas();
-      string visualizarVisitantesReserva();
-      string mostrarEstadoRuta();
-      void buscarInformacion();
+      void visualizarRutas();
+      void visualizarVisitantesReserva();
+      void mostrarEstadoRuta();
+      void buscarInformacion(Parque r);
 };
 #endif
