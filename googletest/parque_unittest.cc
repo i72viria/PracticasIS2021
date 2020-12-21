@@ -1,6 +1,5 @@
 //PARQUE UNITTEST
 #include "parque.h"
-#include "ruta.h"
 #include "gtest/gtest.h"
 
 //Test el constructor
