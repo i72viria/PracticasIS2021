@@ -11,8 +11,8 @@ TEST(Visitante, Constructor) {
   ASSERT_EQ("", v.getApellido2V());
   ASSERT_EQ("", v.getDniV());
   ASSERT_EQ("", v.getFecha_nacimiento());
-  ASSERT_EQ("", v.getTelefonoV());
-  ASSERT_EQ(0, v.getDiscapacidad());
+  ASSERT_EQ(0, v.getTelefonoV());
+  ASSERT_EQ("", v.getDiscapacidad());
   }
   //Tests modificadores y observadores
   TEST(Visitante, ModificadoresObservadores) {
@@ -29,8 +29,8 @@ TEST(Visitante, Constructor) {
     v.setFecha_nacimiento("26.10.1999");
     ASSERT_EQ("26.10.1999",v.getFecha_nacimiento());
 
-    v.setTelefonoV("606682354");
-    ASSERT_EQ("606682354", v.getTelefonoV());
+    v.setTelefonoV(606682354);
+    ASSERT_EQ(606682354, v.getTelefonoV());
 
     v.setDiscapacidad("Esguince");
     ASSERT_EQ("Esguince", v.getDiscapacidad());
