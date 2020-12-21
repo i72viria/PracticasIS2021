@@ -21,6 +21,7 @@ using namespace std;
       string horario_;
       list <Ruta> rutas_;
       list <Reserva> reservas_;
+      list <Parque> parque_;
     public:
       Parque(){}
       Parque(string nombre=",",string localizacion=",",float superficie=0,string fecha_reconocimiento=",",int telefono_parque=0,string horario=","){
@@ -35,7 +36,7 @@ using namespace std;
       inline void setNombre(string nombre){nombre_=nombre;}
       inline string getNombre(){return nombre_;}
 
-      inline void setLocalizacion(string localizacion){localizacion_=localizacion}
+      inline void setLocalizacion(string localizacion){localizacion_=localizacion;}
       inline string getLocalizacion(){return localizacion_;}
 
       inline void setSuperficie(float superficie){superficie_=superficie;}
@@ -45,7 +46,7 @@ using namespace std;
       inline string getFecha_reconocimiento(){return fecha_reconocimiento_;}
 
       inline void setTelefono_parque(int telefono_parque){telefono_parque_=telefono_parque;}
-      inline int getTelefono_parque(){return telefono_parque;}
+      inline int getTelefono_parque(){return telefono_parque_;}
 
       inline void setHorario(string horario){horario_=horario;}
       inline string getHorario(){return horario_;}
