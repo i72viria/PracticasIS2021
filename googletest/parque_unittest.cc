@@ -15,21 +15,21 @@ TEST(Parque, Constructor) {
   }
   //Tests modificadores y observadores
   TEST(Parque, ModificadoresObservadores) {
-    Parque p("MiraBueno","Cordoba","3500","26.10.1999",606682354,"09 a 20");
+    Parque p("MiraBueno","Cordoba",3500,"26.10.1999",606682354,"09 a 20");
     p.setNombre("MiraBueno");
     ASSERT_EQ("MiraBueno",p.getNombre());
 
     p.setLocalizacion("Cordoba");
     ASSERT_EQ("Cordoba",p.getLocalizacion());
 
-    p.setSuperficie("3500");
-    ASSERT_EQ("3500",p.getSuperficie());
+    p.setSuperficie(3500);
+    ASSERT_EQ(3500,p.getSuperficie());
 
     p.setFecha_reconocimiento("26.10.1999");
     ASSERT_EQ("26.10.1999",p.getFecha_reconocimiento());
 
-    p.setTelefono_parque("606682354");
-    ASSERT_EQ("606682354", p.getTelefono_parque());
+    p.setTelefono_parque(606682354);
+    ASSERT_EQ(606682354, p.getTelefono_parque());
 
     p.setHorario("09 a 20");
     ASSERT_EQ("09 a 20", p.getHorario());
