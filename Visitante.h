@@ -19,7 +19,7 @@ using namespace std;
         int TelefonoV_;
         string Discapacidad_;
       public:
-        Visitante(){}
+//        Visitante(){}
         Visitante(string NombreV="",string Apellido1V="",string Apellido2V="",string DniV="",string Fecha_nacimiento="",int TelefonoV=0,string Discapacidad=""){
           NombreV_=NombreV;
           Apellido1V_=Apellido1V;
