@@ -23,11 +23,8 @@ TEST(Visitante, Constructor) {
     v.setApellido1V("Villegas");
     ASSERT_EQ("Villegas",v.getApellido1V());
 
-    v.setApellido2V("del Rio");
-    ASSERT_EQ("del Rio",v.getApellido2V());    
-
     v.setDniV("46069556G");
-    ASSERT_EQ("46069556G",v.getDniV());
+    ASSERT_EQ("46069556G",v.getApellido2V());
 
     v.setFecha_nacimiento("26.10.1999");
     ASSERT_EQ("26.10.1999",v.getFecha_nacimiento());
