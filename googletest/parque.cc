@@ -10,10 +10,10 @@ void Parque::visualizarRutas(){
 
         while(f.getline(nombre,225,',')){
             f.getline(localizacion,225,',');
-            f.getline(superficie,225,',');
+            f.getline(superficie,225,'\n');
             f.getline(fecha_reconocimiento,225,',');
-            f.getline(telefono_parque,225,',');
-            f.getline(horario,225,'\n');
+            f.getline(telefono_parque,225,'\n');
+            f.getline(horario,225,',');
 
             Parque aux(nombre,localizacion,superficie,fecha_reconocimiento,telefono_parque,horario);
             parque_.push_back(aux);
