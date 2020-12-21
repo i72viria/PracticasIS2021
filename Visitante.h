@@ -1,8 +1,9 @@
 #ifndef VISITANTE_H
 #define VISITANTE_H
 
-#include <string>
+
 #include <iostream>
+#include <string>
 #include <cstdlib>
 #include <fstream>
 
