@@ -1,2 +1,5 @@
 # PracticasIS2021
-### Editando el repositorio para probar markdown
+### Proyecto Software
+Rama MAIN: código de las clases del sistema
+
+Rama MASTER: código de las pruebas unitarias a partir de googletest (archivos unittest.cc)
