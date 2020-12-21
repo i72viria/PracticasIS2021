@@ -24,15 +24,7 @@ using namespace std;
       list <Parque> parque_;
     public:
       Parque(){}
-      Parque(string nombre=",",string localizacion=",",float superficie=0,string fecha_reconocimiento=",",int telefono_parque=0,string horario=","){
-        nombre_=nombre;
-        localizacion_=localizacion;
-        superficie_=superficie;
-        fecha_reconocimiento_=fecha_reconocimiento;
-        telefono_parque_=telefono_parque;
-        horario_=horario;
-      }
-
+      Parque(string nombre=",",string localizacion=",",float superficie=0,string fecha_reconocimiento=",",int telefono_parque=0,string horario=",");
       inline void setNombre(string nombre){nombre_=nombre;}
       inline string getNombre(){return nombre_;}
 
