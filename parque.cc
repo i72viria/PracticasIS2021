@@ -1,5 +1,5 @@
 #include "parque.h"
-#include "Visitantes.h"
+#include "Visitante.h"
 
 void Parque::visualizarRutas(){
     parque_.clear();
